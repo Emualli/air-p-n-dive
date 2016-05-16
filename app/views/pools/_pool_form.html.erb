@@ -1,0 +1,25 @@
+<div class="pools">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+        <div class="pool">
+          <%= simple_form_for(@pool) do |f| %>
+            <%= f.error_notification %>
+
+            <%= f.input :description %>
+            <%= f.input :location %>
+            <%= f.input :width %>
+            <%= f.input :length %>
+            <%= f.input :depth %>
+            <%= f.input :shape %>
+            <%= f.input :water_type %>
+            <%= f.input :equipments %>
+            <%= f.input :price %>
+
+            <%= f.button :submit %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

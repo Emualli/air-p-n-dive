@@ -1,0 +1,11 @@
+<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));">
+  <div class="card-description">
+    <h2><%= pool.description %></h2>
+    <p><%= pool.price %> €</p>
+    <p><%= pool.location %></p>
+    <p><%= pool.equipments %></p>
+    <p><%= pool.shape %>€</p>
+    <p><%= pool.width %>m x <%= pool.length %>m x <%= pool.depth %>m</p>
+  </div>
+  <%= link_to "", pool_path(pool), :class => "card-link" %>
+</div>
