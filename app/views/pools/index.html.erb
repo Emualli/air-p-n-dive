@@ -1,0 +1,11 @@
+<h1 class="text-center">Pools</h1>
+
+<div class="container">
+  <div class="row">
+  <% @pools.each do |pool| %>
+    <div class="col-xs-12 col-sm-6 col-lg-4">
+        <%= render "pool_card", pool: pool %>
+    </div>
+  <% end %>
+  </div>
+</div>
