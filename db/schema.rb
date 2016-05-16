@@ -11,9 +11,73 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160516142411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "agendas", force: :cascade do |t|
+    t.string   "start_date"
+    t.string   "end_date"
+    t.integer  "pool_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "agendas", ["pool_id"], name: "index_agendas_on_pool_id", using: :btree
+
+  create_table "bookings", force: :cascade do |t|
+    t.integer  "pool_id"
+    t.integer  "user_id"
+    t.string   "status"
+    t.string   "start_date"
+    t.string   "end_date"
+    t.integer  "price"
+    t.integer  "booking_rating"
+    t.text     "booking_comment"
+    t.integer  "customer_rating"
+    t.text     "customer_comment"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "bookings", ["pool_id"], name: "index_bookings_on_pool_id", using: :btree
+  add_index "bookings", ["user_id"], name: "index_bookings_on_user_id", using: :btree
+
+  create_table "pools", force: :cascade do |t|
+    t.integer  "width"
+    t.integer  "length"
+    t.integer  "depth"
+    t.string   "shape"
+    t.string   "location"
+    t.string   "water_type"
+    t.string   "longitude"
+    t.string   "latitude"
+    t.string   "equipments"
+    t.text     "description"
+    t.integer  "price"
+    t.string   "status"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+  end
+
+  add_index "pools", ["user_id"], name: "index_pools_on_user_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "birth_date"
+    t.string   "address"
+    t.text     "bio"
+    t.string   "phone"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "agendas", "pools"
+  add_foreign_key "bookings", "pools"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "pools", "users"
 end
