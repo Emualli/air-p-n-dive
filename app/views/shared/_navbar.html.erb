@@ -29,18 +29,13 @@
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t ".profile", default: "Home" %>
+              <%= link_to user_bookings_path(current_user) do %>
+                <i class="fa fa-home"></i>  <%= t ".profile", default: "My Bookings" %>
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t ".profile", default: "Home" %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t ".profile", default: "Home" %>
+              <%= link_to user_my_pools_path(current_user) do %>
+                <i class="fa fa-home"></i>  <%= t ".profile", default: "Manage my pools" %>
               <% end %>
             </li>
             <li>

@@ -26,6 +26,7 @@ class BookingsController < ApplicationController
   end
 
   def update
+    # --TODO-- Change to @booking = Booking.find() with a .update afterwards
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.pool = @pool

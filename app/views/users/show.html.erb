@@ -1,14 +1,16 @@
-<h1><%= @user.first_name %>'s Profile : </h1>
+<h1><%= @user.first_name %>'s Profile : </h1><br>
 
-<div>
-  <%= simple_form_for @user do |f| %>
-  <%= f.input :first_name, input_html: { value: "#{@user.first_name}" } %>
-  <%= f.input :last_name, input_html: { value: "#{@user.last_name}" } %>
-  <%= f.input :email, input_html: { value: "#{@user.email}" } %>
-  <%= f.input :birth_date, input_html: { value: "#{@user.birth_date}" } %>
-  <%= f.input :address, input_html: { value: "#{@user.address}" } %>
-  <%= f.input :bio, input_html: { value: "#{@user.bio}" } %>
-  <%= f.input :phone, input_html: { value: "#{@user.phone}" } %>
-  <%= f.button :submit %>
-<% end %>
+<div class="col-xs-6 col-xs-offset-3">
+  <div class="row">
+      <%= simple_form_for @user do |f| %>
+      <%= f.input :first_name, input_html: { value: "#{@user.first_name}" } %>
+      <%= f.input :last_name, input_html: { value: "#{@user.last_name}" } %>
+      <%= f.input :email, input_html: { value: "#{@user.email}" } %>
+      <%= f.input :birth_date, input_html: { value: "#{@user.birth_date}" } %>
+      <%= f.input :address, input_html: { value: "#{@user.address}" } %>
+      <%= f.input :bio, input_html: { value: "#{@user.bio}" } %>
+      <%= f.input :phone, input_html: { value: "#{@user.phone}" } %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
 </div>

@@ -1,0 +1,6 @@
+<% @pools.each do |pool| %>
+Pool of <%= pool.user.first_name %> <%= pool.user.last_name %><br>
+Dimensions : <%= pool.width %> x <%= pool.length %> x <%= pool.depth %><br>
+Latitude : <%= pool.latitude %> - Longitude : <%= pool.longitude %><br>
+Price : <%= pool.price %><br>
+<% end %>
