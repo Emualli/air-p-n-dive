@@ -11,6 +11,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.user = current_user
     if @booking.save
       redirect_to booking_path(@booking)
     else
@@ -26,6 +27,8 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.new(booking_params)
+    @booking.user = current_user
+    @booking.pool = @pool
     # --TODO-- define status update
     if @booking.save
       redirect_to booking_path(@booking)
@@ -41,7 +44,7 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:status, :start_date, :end_date, :price)
+    params.require(:booking).permit(:status, :start_date, :end_date, :price, :pool_id)
   end
 
 end
