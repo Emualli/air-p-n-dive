@@ -1,21 +1,21 @@
 class BookingsController < ApplicationController
-  before_action :show, :edit, :update
+  before_action :set_booking, only: [:show, :edit, :update]
 
   def new
     @booking = Booking.new
   end
 
+  def index
+    @bookings = Booking.all
+  end
+
   def create
-    @booking = Booking.new(params[:booking])
+    @booking = Booking.new(booking_params)
     if @booking.save
       redirect_to booking_path(@booking)
     else
       render :new
     end
-  end
-
-  def index
-    @bookings = Booking.all
   end
 
   def show
@@ -25,8 +25,12 @@ class BookingsController < ApplicationController
   end
 
   def update
-    @booking.update(booking_params)
-    redirect_to booking_path(@booking)
+    @booking = Booking.new(booking_params)
+    # --TODO-- define status update
+    if @booking.save
+      redirect_to booking_path(@booking)
+    else
+      render :# --TODO--
   end
 
   private

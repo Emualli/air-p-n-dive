@@ -1,7 +1,0 @@
-<h1>My Bookings</h1>
-
-<ul>
-<%= @bookings.each do |booking| %>
-  <li><%= booking.user.first_name + " " + booking.user.last_name + "booked a pool to " + booking.pool.user.first_name + " " + booking.user.last_name %></li>
-<% end %>
-</ul>

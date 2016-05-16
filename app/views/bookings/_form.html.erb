@@ -3,4 +3,7 @@
 <%= f.input :end_date %>
 <%= f.hidden_field :price, value: @pool.price %>
 <%= f.hidden_field :status, value: "created" %>
+<%= f.hidden_field :user, value: current_user %>
+<%= f.hidden_field :pool, value: @pool %>
+<%= f.button :submit %>
 <% end %>
