@@ -35,7 +35,7 @@ class PoolsController < ApplicationController
   private
 
   def find_pool
-    @pool = pool.find(params[:id])
+    @pool = Pool.find(params[:id])
   end
 
   def pool_params

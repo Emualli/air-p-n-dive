@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'home#index'
+  root 'pools#index'
   resources :pools, except: [:destroy]
   resources :users, except: [:destroy]
   resources :bookings, except: [:destroy]
