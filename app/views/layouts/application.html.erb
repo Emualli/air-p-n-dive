@@ -11,8 +11,8 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <p class="notice" style='display:none'><%= notice %></p> <!-- --TODO-- See how to display those classes properly -->
+    <p class="alert" style='display:none'><%= alert %></p>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
   </body>
