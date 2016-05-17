@@ -3,16 +3,16 @@ class PoolsController < ApplicationController
   before_action :find_pool, only: [:show, :edit, :update]
 
   def index
-    if ( !params[:location].nil? && !params[:reservation_date].nil? )
-      @location = params[:location].downcase
-      params[:location].empty? ? @pools = Pool.all : @pools = search_pools_by_location
-      unless params[:reservation_date].empty?
-        reservation_string = params[:reservation_date].gsub('%2F','/')
-        @reservation_date = date_string_to_date(reservation_string)
-        @pools = fetch_pools_by_availability
-      end
+    if !params.has_key?(:location) || params[:location].empty?
+      @pools = Pool.all
     else
-      @pools = []
+      @location = params[:location].downcase
+      @pools = search_pools_by_location
+    end
+    if params.has_key?(:reservation_date) && !params[:reservation_date].empty?
+      reservation_string = params[:reservation_date].gsub('%2F','/')
+      @reservation_date = date_string_to_date(reservation_string)
+      @pools = fetch_pools_by_availability
     end
   end
 
