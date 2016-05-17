@@ -1,6 +1,6 @@
 <%= simple_form_for @booking do |f|%>
 
-<%= f.input :date, label: 'Book your pool for :', label_html: { class: 'label_form' }, placeholder: "date" %>
+<%= f.input :date, label: 'Book your pool for :', label_html: { class: 'label_form' }, placeholder: "Date" %>
 
 <div class="row">
   <div class="col-xs-6">
@@ -10,12 +10,11 @@
     <%= f.input :end_time, label: 'Ending at :', label_html: { class: 'label_form' } %>
   </div>
 </div>
-<div style ="align-left">
-
-<%= f.hidden_field :price, value: @pool.price %>
-<%= f.hidden_field :status, value: "created" %>
-<%= f.hidden_field :pool_id, value: params[:id] %>
-<%= f.button :submit, "Book now!", class: "btn btn-danger" %>
+<div>
+  <%= f.hidden_field :price, value: @pool.price %>
+  <%= f.hidden_field :status, value: "created" %>
+  <%= f.hidden_field :pool_id, value: params[:id] %>
+  <%= f.button :submit, "Book now!", class: "btn btn-danger", style: 'width:100%' %>
 </div>
 <% end %>
 
