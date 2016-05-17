@@ -5,7 +5,7 @@ class Pool < ActiveRecord::Base
   has_attachments :photos, maximum: 5
 
   def average_rating
-    bookings.map(&:booking_rating).reject(&:nil?).reduce(:+).fdiv(bookings.size)
+    bookings.map(&:booking_rating).reject(&:nil?).reduce(:+).fdiv(bookings.size) unless bookings.map(&:booking_rating).reject(&:nil?).empty?
   end
 
   def nb_booking_comment
