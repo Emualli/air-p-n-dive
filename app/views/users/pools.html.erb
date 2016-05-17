@@ -4,3 +4,5 @@ Dimensions : <%= pool.width %> x <%= pool.length %> x <%= pool.depth %><br>
 Latitude : <%= pool.latitude %> - Longitude : <%= pool.longitude %><br>
 Price : <%= pool.price %><br>
 <% end %>
+
+<%= link_to new_pool_path do %><div class="btn btn-primary">Add a Pool</div><% end %>
