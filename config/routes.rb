@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Attachinary::Engine => "/attachinary"
   devise_for :users
   root 'pages#home'
   resources :pools, except: [:destroy]

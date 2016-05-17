@@ -1,6 +1,9 @@
 <!-- app/views/pools/show.html.erb -->
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));">
 </div>
+
+<!-- Summary + booking form -->
+
 <div class="container paddind-summary">
   <div class="row">
     <div class="col-xs-12 col-sm-8">
@@ -11,12 +14,13 @@
         </div>
         <div class="pool-description">
           <h1><%= @pool.title %></h1>
-          <p><%= @pool.location %>&nbsp&nbsp&nbsp<% 2 * @pool.average_rating.round.times do %>
+          <p><%= @pool.location %>&nbsp&nbsp&nbsp<% unless @pool.average_rating.nil? then @pool.average_rating.round.times do %>
             <i class="fa fa-star" style="color: #EEBD2D" aria-hidden="true"></i>
           <% end %>
           <% (5 - @pool.average_rating.round).times do %>
             <i class="fa fa-star-o" aria-hidden="true"></i>
           <% end %>
+           <% end %>
           </p>
           <div class="row text-center pool-infos">
             <div class="col-xs-4">
@@ -42,6 +46,9 @@
     </div>
   </div>
 </div>
+
+<!-- Description -->
+
 <div class="description">
   <div class="container">
     <div class="row">
@@ -55,12 +62,46 @@
     </div>
   </div>
 </div>
-<div>
-  <h3><%= @pool.nb_booking_comment %> commentaire(s)&nbsp&nbsp&nbsp<% 2 * @pool.average_rating.round.times do %>
+
+<!-- Customer reviews -->
+
+<div class="container">
+  <h3><%= @pool.nb_booking_comment %> commentaire(s)&nbsp&nbsp&nbsp<% unless @pool.average_rating.nil? then @pool.average_rating.round.times do %>
             <i class="fa fa-star" style="color: #EEBD2D" aria-hidden="true"></i>
           <% end %>
           <% (5 - @pool.average_rating.round).times do %>
             <i class="fa fa-star-o" aria-hidden="true"></i>
-          <% end %></h3>
-
+          <% end %>
+          <% end %>
+  </h3>
+  <% @pool.bookings.each do |booking| %>
+  <div class="row">
+    <div class="col-xs-12 col-sm-8">
+      <div class="review">
+        <div class="profile-picture text-center">
+          <%= image_tag('avatar.jpg', class: 'avatar-large') %>
+          <p><%= booking.user.first_name %></p>
+        </div>
+        <div class="review-content">
+          <p><%= booking.date %>&nbsp&nbsp&nbsp<%  unless @pool.average_rating.nil? then booking.booking_rating.times do %>
+            <i class="fa fa-star" style="color: #EEBD2D" aria-hidden="true"></i>
+          <% end %>
+          <% (5 - booking.booking_rating).times do %>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+          <% end %>
+          <% end %>
+          </p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<%= booking.booking_comment %></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+    </div>
+  </div>
+<% end %>
 </div>

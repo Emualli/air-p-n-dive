@@ -18,6 +18,10 @@ gem 'autoprefixer-rails'
 gem 'devise' # Manages User login ('normal' connect)
 gem 'omniauth-facebook' # Manages Facebook connect
 gem 'bootstrap-datepicker-rails' # Datepicker boostrap for rails app
+gem "cloudinary" #For image upload
+gem "attachinary"
+gem "jquery-fileupload-rails"
+gem "coffee-rails"
 
 group :development, :test do
   gem 'binding_of_caller'

@@ -1,4 +1,5 @@
 class PoolsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:home, :index, :show]
   before_action :find_pool, only: [:show, :edit, :update]
 
   def index
@@ -51,7 +52,7 @@ class PoolsController < ApplicationController
   end
 
   def pool_params
-    params.require(:pool).permit(:user_id, :width, :length, :depth, :shape, :location, :water_type, :latitude, :longitude, :equipments, :price, :description, :status, :title)
+    params.require(:pool).permit(:user_id, :width, :length, :depth, :shape, :location, :water_type, :latitude, :longitude, :equipments, :price, :description, :status, :title, photos: [])
   end
 
   def search_pools_by_location
