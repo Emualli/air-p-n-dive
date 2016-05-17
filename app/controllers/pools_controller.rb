@@ -6,7 +6,7 @@ class PoolsController < ApplicationController
     @pools = search_pools_by_location
     if params.has_key?(:reservation_date)
       reservation_string = params[:reservation_date].gsub!('%2F','/')
-      @reservartion_date = date_string_to_date(reservation_string)
+      @reservation_date = date_string_to_date(reservation_string)
       @pools = fetch_pools_by_availability
     end
   end
