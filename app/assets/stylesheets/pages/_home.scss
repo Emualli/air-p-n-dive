@@ -74,10 +74,38 @@
         color:#515151;
         margin-top: 100px;
       }
-      #card3 {
-        background-color:white;
-        height:150px;
+      #card3-1 {
+        background-image:url(image_path('barcelona_pool.jpg'));
+        background-size: cover;
+        height:300px;
         margin: 0 10px;
+        width: 30%;
+        display: inline-block;
+      }
+      #card3-2 {
+        background-image:url(image_path('marseille_pool.jpg'));
+        background-size: cover;
+        height:300px;
+        margin: 0 10px;
+        width: 30%;
+        display: inline-block;
+      }
+      #card3-3 {
+        background-image:url(image_path('roma_pool.jpg'));
+        background-size: cover;
+        height:300px;
+        margin: 0 10px;
+        width: 30%;
+        display: inline-block;
+      }
+      #city-cards {
+        margin-top:60px;
+        #city-caption {
+          font-weight: 800;
+          color: white;
+          text-align:center;
+          padding-top:40%;
+        }
       }
     }
   }
