@@ -19,17 +19,20 @@ Price : <%= pool.price %><br>
       <div class="modal-body">
         <%= simple_form_for(@pool) do |f| %>
           <%= f.error_notification %>
-
           <%= f.input :title %>
           <%= f.input :description %>
           <%= f.input :location %>
-          <%= f.input :width %>
-          <%= f.input :length %>
-          <%= f.input :depth %>
-          <%= f.input :shape %>
-          <%= f.input :water_type %>
-          <%= f.input :equipments %>
+          <div class="button-inline">
+            <%= f.input :width %>
+            <%= f.input :length %>
+            <%= f.input :depth %>
+          </div>
+          <div class="button-inline">
+            <%= f.input :shape %>
+            <%= f.input :water_type %>
           <%= f.input :price %>
+          </div>
+          <%= f.input :equipments %>
           <%= f.input :photos, as: :attachinary %>
       </div>
       <div class="modal-footer">
