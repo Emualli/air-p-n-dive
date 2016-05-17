@@ -1,0 +1,25 @@
+.banner {
+  height: 350px;
+  background: cover;
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  color: rgb(30, 30, 30);
+  transition: all 0.3s;
+}
+
+.profile-picture {
+  flex: 0 0 25%;
+  padding-right: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.pool-description {
+  flex: 1 0 auto;
+}

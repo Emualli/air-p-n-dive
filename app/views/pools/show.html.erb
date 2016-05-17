@@ -1,11 +1,44 @@
 <!-- app/views/pools/show.html.erb -->
-<div class="container">
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-      <%= render "pools/pool_card", pool: @pool %>
-    </div>
-    <div id="test">
-      <%= render "bookings/bookingform", pool: @pool %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));">
+</div>
+<div id="summary">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-8">
+        <div class="summary">
+          <div class="profile-picture text-center">
+            <%= image_tag('avatar.jpg', class: 'avatar-large') %>
+            <p><%= @pool.user.first_name %></p>
+          </div>
+          <div class="pool-description">
+            <h1><%= @pool.description %></h1>
+            <p><%= @pool.location %></p>
+            <div class="row text-center pool-infos">
+              <div class="col-sm-3">
+                <p>Dimensions</p>
+                <p>
+                  <%= @pool.width %>m x <%= @pool.length %>m x <%= @pool.depth %>m
+                </p>
+              </div>
+              <div class="col-sm-3">
+                <p>Shape</p>
+                <p><%= @pool.shape %></p>
+              </div>
+              <div class="col-sm-3">
+                <p>Water type</p>
+                <p><%= @pool.water_type %></p>
+              </div>
+              <div class="col-sm-3">
+                <p>Equipments</p>
+                <p><%= @pool.equipments %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <%= render "bookings/bookingform", pool: @pool %>
+      </div>
     </div>
   </div>
 </div>
