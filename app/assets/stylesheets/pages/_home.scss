@@ -37,4 +37,48 @@
       margin-top:20px;
     }
   }
+  #homepage-followup {
+    background-color:#DDDDDD;
+    height:1500px;
+    #card1 {
+      background-color:white;
+      margin-top:150px;
+      padding: 0px;
+      #pool1 {
+        padding:0px;
+        height:370px;
+        background-image:url(image_path('pool1.jpg'));
+        background-size: cover;
+      }
+      #caption1 {
+        padding-left:10px;
+        padding-top:40px;
+        font-size: 28px;
+        font-weight: 800;
+        font-family: Open Sans;
+      }
+      #caption2 {
+        padding-left:10px;
+        padding-top: 30px;
+      }
+      #btn-pool1 {
+        display:block;
+        margin: 0 auto;
+        margin-top: 43px;
+      }
+    }
+    #card2 {
+      #caption1 {
+        font-weight:800;
+        font-size: 35px;
+        color:#515151;
+        margin-top: 100px;
+      }
+      #card3 {
+        background-color:white;
+        height:150px;
+        margin: 0 10px;
+      }
+    }
+  }
 }
