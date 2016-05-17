@@ -2,11 +2,26 @@
 
 <div class="container">
   <div class="row">
-  <% @pools.each do |pool| %>
-    <div class="col-xs-12 col-sm-6 col-lg-4">
-        <%= render "pool_card", pool: pool %>
+    <div class="col-xs-12 col-sm-12 col-lg-8">
+      <% @pools.each do |pool| %>
+        <div class="col-xs-12 col-sm-6 col-lg-4">
+          <%= render "pool_card", pool: pool %>
+        </div>
+      <% end %>
     </div>
-    .col-xs-12.col-sm-12.col-lg
-  <% end %>
+    <div class="col-xs-12 col-sm-12 col-lg-4">
+      <div id="map"></div>
+    </div>
   </div>
 </div>
+
+<script>
+  function initMap() {
+    var mapDiv = document.getElementById('map');
+    var map = new google.maps.Map(mapDiv, {
+      center: {lat: 44.540, lng: -78.546},
+      zoom: 8
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
