@@ -1,28 +1,24 @@
 <div class="card-container">
+  <%= link_to pool_path(pool), :class => "card-link" do %>
   <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= pool.photos? ? cl_image_path(pool.photos.first.path) : image_path('barcelona_pool.jpg') %>);">
-    <div class="card-description">
-      <h2><%= pool.description %></h2>
-      <p><%= pool.price %> €</p>
-      <p><%= pool.location %></p>
-      <p><%= pool.equipments %></p>
-      <p><%= pool.shape %></p>
-      <p><%= pool.width %>m x <%= pool.length %>m x <%= pool.depth %>m</p>
-    </div>
-    <%= link_to "", pool_path(pool), :class => "card-link" %>
   </div>
   <div class="card-footer">
-    <h2><%= pool.title %></h2>
+    <h5><%= pool.title %></h5>
     <p><%= pool.description %></p>
     <div class="rating">
-      <% pool.average_rating.round.times do %>
+      <% unless pool.average_rating.nil? then pool.average_rating.round.times do %>
         <i class="fa fa-star" aria-hidden="true"></i>
       <% end %>
       <% (5 - pool.average_cocktail.rating.round).times do %>
         <i class="fa fa-star-o" aria-hidden="true"></i>
       <% end %>
+      <% end %>
     </div>
   </div>
   <div class="card-avatar">
-
+    <% if pool.user.avatar? %>
+      <%= cl_image_tag pool.user.avatar.path, class: 'avatar-bordered' %>
+    <% end %>
   </div>
+  <% end %>
 </div>
