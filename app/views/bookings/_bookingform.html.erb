@@ -1,6 +1,6 @@
 <%= simple_form_for @booking do |f|%>
 
-<%= f.input :date, label: 'Book your pool for :', label_html: { class: 'label_form' } %>
+<%= f.input :date, label: 'Book your pool for :', label_html: { class: 'label_form' }, placeholder: "date" %>
 
 <div class="row">
   <div class="col-xs-6">
@@ -18,3 +18,4 @@
 <%= f.button :submit, "Book now!", class: "btn btn-danger" %>
 </div>
 <% end %>
+
