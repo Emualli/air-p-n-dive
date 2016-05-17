@@ -3,8 +3,23 @@
  * (margin/padding adjustments)
  * ------------------------------------- */
 
-/* --TODO-- Add media queries for mobile display (to display in column the form) */
-
+@media screen and (max-width: 990px) {
+  #card3-1 {
+    width: 100% !important;
+    margin-top: 20px !important;
+  }
+  #card3-2 {
+    width: 100% !important;
+    margin-top: 20px !important;
+  }
+  #card3-3 {
+    width: 100% !important;
+    margin-top: 20px !important;
+  }
+  #city-caption {
+    padding-top: 20% !important;
+  }
+}
 
 #home-main-container {
   width:100%;
@@ -28,13 +43,94 @@
     font-size:20px;
     background-color:black;
     opacity: 0.8;
-    height: 15vh;
     #searchbar-content {
       font-size:12px;
-      margin-top:34px;
     }
     #search-button {
       margin-top:20px;
+    }
+  }
+
+  #searchbar > div {
+    padding: 40px 0;
+  }
+
+  #homepage-followup {
+    background-color:#DDDDDD;
+    padding: 40px 0;
+    #card1 {
+      background-color:white;
+      margin-top:150px;
+      padding: 0px;
+      #pool1 {
+        padding:0px;
+        height:370px;
+        background-image:url(image_path('pool1.jpg'));
+        background-size: cover;
+      }
+      #button-pool1 {
+          padding:15px 0;
+      }
+      #caption1 {
+        padding-left:10px;
+        padding-top:40px;
+        font-size: 28px;
+        font-weight: 800;
+        font-family: Open Sans;
+      }
+      #caption2 {
+        padding-left:10px;
+        padding-top: 30px;
+      }
+      #btn-pool1 {
+        display:block;
+        margin: 0 auto;
+      }
+    }
+    #card2 {
+      #caption1 {
+        font-weight:800;
+        font-size: 35px;
+        color:#515151;
+        margin-top: 100px;
+      }
+      #card3-1 {
+        background-image:url(image_path('barcelona_pool.jpg'));
+        background-size: cover;
+        height:300px;
+        margin: 0 10px;
+        width: 30%;
+        display: inline-block;
+      }
+      #card3-2 {
+        background-image:url(image_path('marseille_pool.jpg'));
+        background-size: cover;
+        height:300px;
+        margin: 0 10px;
+        width: 30%;
+        display: inline-block;
+      }
+      #card3-3 {
+        background-image:url(image_path('roma_pool.jpg'));
+        background-size: cover;
+        height:300px;
+        margin: 0 10px;
+        width: 30%;
+        display: inline-block;
+      }
+      #city-cards {
+        margin-top:60px;
+        cursor: pointer;
+        #city-caption {
+          font-weight: 800;
+          color: white;
+          text-align:center;
+          padding-top:40%;
+        }
+      }
+      #city-cards:hover {
+        box-shadow: black;
+      }
     }
   }
 }

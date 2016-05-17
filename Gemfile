@@ -17,6 +17,7 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'devise' # Manages User login ('normal' connect)
 gem 'omniauth-facebook' # Manages Facebook connect
+gem 'bootstrap-datepicker-rails' # Datepicker boostrap for rails app
 
 group :development, :test do
   gem 'binding_of_caller'

@@ -8,11 +8,36 @@
           <div class="col-xs-12 col-md-8 col-md-offset-2" id="searchbar-content">
             <% @date = Date.new %>
             <form action="/pools">
-            <div class="col-xs-3 col-xs-offset-1" id="search_location"><input type="text" class="form-control" name="location" placeholder="Paris"></div>
-            <div class="col-xs-2" id="search_start_date"><input class="form-control" name="reservation_date" placeholder="12/05/2016"></div>
-            <div class="col-xs-1" id="search_submit"><button class="btn btn-primary" type="submit">Rechercher</button></div></form>
+            <div class="col-xs-8 col-md-5 col-xs-offset-1" id="search_location"><input type="text" class="form-control" name="location" placeholder="Paris"></div>
+            <div class="col-xs-5 col-md-3 col-xs-offset-1" id="search_start_date"><input class="form-control datepicker" id="datepicker" name="reservation_date" placeholder="Date"></div>
+            <div class="col-xs-4 col-md-2" id="search_submit"><button class="btn btn-primary" type="submit">Rechercher</button></div></form>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12" id="homepage-followup">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2" id="card1">
+          <div class="col-xs-12 col-sm-8" id='pool1'>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <h3 id="caption1">Discover and enjoy the greatest places to swim</h3>
+            <p id="caption2">World's greatest swimming pools are just a few clicks away</p>
+            <div id="button-pool1"><button class="btn btn-primary" id="btn-pool1">Discover them now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 text-center" id="card2">
+      <h2 id="caption1">Discover the main locations</h2>
+      <div class="row">
+        <div class="col-xs-8 col-xs-offset-2" id="city-cards">
+          <%= link_to pools_path(location: 'Barcelona') do %><div id="card3-1"><h2 id="city-caption">Barcelona</h2></div><% end %>
+          <%= link_to pools_path(location: 'Marseille') do %><div id="card3-2"><h2 id="city-caption">Marseille</h2></div><% end %>
+          <%= link_to pools_path(location: 'Roma') do %><div id="card3-3"><h2 id="city-caption">Roma</h2></div><% end %>
+        </div>
+      </div>
       </div>
     </div>
   </div>
