@@ -9,8 +9,8 @@
             <% @date = Date.new %>
             <%= simple_form_for @booking do |f| %>
             <div class="col-xs-3 col-xs-offset-1" id="search_location"><%= f.input :location, placeholder: 'Paris' %></div>
-            <div class="col-xs-2" id="search_start_date"><%= f.input :start_date, placeholder: "#{Date.new(2001,2,3).mday}-#{Date.new(2001,2,3).mon}-#{Date.new(2001,2,3).year}" %></div>
-            <div class="col-xs-2" id="search_end_date"><%= f.input :end_date, placeholder: "#{Date.new(2001,2,3).mday}-#{Date.new(2001,2,3).mon}-#{Date.new(2001,2,3).year}" %></div>
+            <div class="col-xs-2" id="search_start_date"><%= f.input :start_date, placeholder: "#{Date.new.mday}-#{Date.new.mon}-#{Date.new.year}" %></div>
+            <div class="col-xs-2" id="search_end_date"><%= f.input :end_date, placeholder: "#{Date.new.mday}-#{Date.new.mon}-#{Date.new.year}" %></div>
             <div class="col-xs-1" id="search_submit"><div class="form-group"><%= f.button :submit, id: 'search-button' %></div></div>
             <% end %>
           </div>
