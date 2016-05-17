@@ -1,11 +1,28 @@
-<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));">
-  <div class="card-description">
-    <h2><%= pool.description %></h2>
-    <p><%= pool.price %> €</p>
-    <p><%= pool.location %></p>
-    <p><%= pool.equipments %></p>
-    <p><%= pool.shape %></p>
-    <p><%= pool.width %>m x <%= pool.length %>m x <%= pool.depth %>m</p>
+<div class="card-container">
+  <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= pool.user.avatar? ? cl_image_path(user.avatar.path) : image_path('barcelona_pool.jpg') %>);">
+    <div class="card-description">
+      <h2><%= pool.description %></h2>
+      <p><%= pool.price %> €</p>
+      <p><%= pool.location %></p>
+      <p><%= pool.equipments %></p>
+      <p><%= pool.shape %></p>
+      <p><%= pool.width %>m x <%= pool.length %>m x <%= pool.depth %>m</p>
+    </div>
+    <%= link_to "", pool_path(pool), :class => "card-link" %>
   </div>
-  <%= link_to "", pool_path(pool), :class => "card-link" %>
+  <div class="card-footer">
+    <h2><%= pool.title %></h2>
+    <p><%= pool.description %></p>
+    <div class="rating">
+      <% cocktail.rating.round.times do %>
+        <i class="fa fa-star" aria-hidden="true"></i>
+      <% end %>
+      <% (5 - cocktail.rating.round).times do %>
+        <i class="fa fa-star-o" aria-hidden="true"></i>
+      <% end %>
+    </div>
+  </div>
+  <div class="card-avatar">
+
+  </div>
 </div>

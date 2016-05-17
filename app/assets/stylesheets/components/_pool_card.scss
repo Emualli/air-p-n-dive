@@ -1,11 +1,24 @@
-.card {
+.card-container {
   height: 175px;
+  position: relative;
+  margin: 5px 0px;
+}
+
+.card {
+  height: 155px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   margin: 5px 0px;
   color: white;
-  position: relative;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
+
+.card-footer {
+
+}
+
 .card-user {
   position: absolute;
   right: 10px;
