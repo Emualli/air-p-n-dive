@@ -7,7 +7,6 @@
   display: flex;
   align-items: center;
   padding: 10px;
-  border-radius: 5px;
   color: rgb(30, 30, 30);
   transition: all 0.3s;
 }
@@ -20,20 +19,53 @@
   flex-direction: column;
 }
 
+.review-content {
+  flex: 1 0 auto;
+}
+
+.review {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: rgb(30, 30, 30);
+  transition: all 0.3s;
+}
+
 .pool-infos {
   flex: 1 0 auto;
   padding-top: 15px;
 }
 
-h1, h3 {
+.description h1, h3 {
   font-size: 25px;
   color : rgb(60, 60, 60);
 }
 
-p {
+.summary h1, h3 {
+  font-size: 25px;
+  color : rgb(60, 60, 60);
+}
+
+.review h1, h3 {
+  font-size: 25px;
+  color : rgb(60, 60, 60);
+}
+
+.description p {
   font-size: 12px;
   color : rgb(130, 130, 130);
 }
+
+.summary p {
+  font-size: 12px;
+  color : rgb(130, 130, 130);
+}
+
+.review p {
+  font-size: 12px;
+  color : rgb(130, 130, 130);
+}
+
 
 .description {
   background-color: rgb(230, 230, 230);
