@@ -3,8 +3,23 @@
  * (margin/padding adjustments)
  * ------------------------------------- */
 
-/* --TODO-- Add media queries for mobile display (to display in column the form) */
-
+@media screen and (max-width: 990px) {
+  #card3-1 {
+    width: 100% !important;
+    margin-top: 20px !important;
+  }
+  #card3-2 {
+    width: 100% !important;
+    margin-top: 20px !important;
+  }
+  #card3-3 {
+    width: 100% !important;
+    margin-top: 20px !important;
+  }
+  #city-caption {
+    padding-top: 20% !important;
+  }
+}
 
 #home-main-container {
   width:100%;
@@ -28,18 +43,21 @@
     font-size:20px;
     background-color:black;
     opacity: 0.8;
-    height: 15vh;
     #searchbar-content {
       font-size:12px;
-      margin-top:34px;
     }
     #search-button {
       margin-top:20px;
     }
   }
+
+  #searchbar > div {
+    padding: 40px 0;
+  }
+
   #homepage-followup {
     background-color:#DDDDDD;
-    height:1500px;
+    padding: 40px 0;
     #card1 {
       background-color:white;
       margin-top:150px;
@@ -49,6 +67,9 @@
         height:370px;
         background-image:url(image_path('pool1.jpg'));
         background-size: cover;
+      }
+      #button-pool1 {
+          padding:15px 0;
       }
       #caption1 {
         padding-left:10px;
@@ -64,7 +85,6 @@
       #btn-pool1 {
         display:block;
         margin: 0 auto;
-        margin-top: 43px;
       }
     }
     #card2 {
@@ -100,12 +120,16 @@
       }
       #city-cards {
         margin-top:60px;
+        cursor: pointer;
         #city-caption {
           font-weight: 800;
           color: white;
           text-align:center;
           padding-top:40%;
         }
+      }
+      #city-cards:hover {
+        box-shadow: black;
       }
     }
   }
