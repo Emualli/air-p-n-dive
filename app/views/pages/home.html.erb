@@ -5,7 +5,15 @@
       <p id="subtitle">The number 1 website for Pool sharing</p>
       <div class="row">
         <div class="col-xs-12" id="searchbar">
-          --TODO-- Add Searchbar
+          <div class="col-xs-8 col-xs-offset-2" id="searchbar-content">
+            <% @date = Date.new %>
+            <%= simple_form_for @booking do |f| %>
+            <div class="col-xs-3 col-xs-offset-1" id="search_location"><%= f.input :location, placeholder: 'Paris' %></div>
+            <div class="col-xs-2" id="search_start_date"><%= f.input :start_date, placeholder: "#{Date.new(2001,2,3).mday}-#{Date.new(2001,2,3).mon}-#{Date.new(2001,2,3).year}" %></div>
+            <div class="col-xs-2" id="search_end_date"><%= f.input :end_date, placeholder: "#{Date.new(2001,2,3).mday}-#{Date.new(2001,2,3).mon}-#{Date.new(2001,2,3).year}" %></div>
+            <div class="col-xs-1" id="search_submit"><div class="form-group"><%= f.button :submit, id: 'search-button' %></div></div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
