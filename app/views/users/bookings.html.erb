@@ -1,3 +1,17 @@
+<div class="container-full">
+  <div class="tabs">
+    <a class="tab active" href="#">
+      <h3>My Bookings</h3>
+    </a>
+    <a class="tab" href="#">
+      <h3>Customer</h3>
+    </a>
+  </div>
+</div>
+
+
+
+
 <% @bookings.each do |booking| %>
 Booking ID : <%= booking.id %><br>
 Booking First name : <%= booking.user.first_name %><br>
