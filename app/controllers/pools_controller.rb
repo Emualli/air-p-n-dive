@@ -3,7 +3,7 @@ class PoolsController < ApplicationController
 
   def index
     @location = params[:location].downcase
-    if params[:pools].empty? ? @pools = Pool.all : @pools = search_pools_by_location
+    params[:location].empty? ? @pools = Pool.all : @pools = search_pools_by_location
     unless params[:reservation_date].empty?
       reservation_string = params[:reservation_date].gsub('%2F','/')
       @reservation_date = date_string_to_date(reservation_string)
