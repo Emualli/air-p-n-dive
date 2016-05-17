@@ -11,26 +11,22 @@
             <p><%= @pool.user.first_name %></p>
           </div>
           <div class="pool-description">
-            <h1><%= @pool.description %></h1>
+            <h1><%= @pool.title %></h1>
             <p><%= @pool.location %></p>
             <div class="row text-center pool-infos">
-              <div class="col-xs-3">
+              <div class="col-xs-4">
                 <p><strong>Dimensions :</strong></p>
                 <p>
                   <%= @pool.width %> x <%= @pool.length %> x <%= @pool.depth %>m
                 </p>
               </div>
-              <div class="col-xs-3">
+              <div class="col-xs-4">
                 <p><strong>Shape: </strong></p>
                 <p><%= @pool.shape %></p>
               </div>
-              <div class="col-xs-3">
+              <div class="col-xs-4">
                 <p><strong>Water type :</strong></p>
                 <p><%= @pool.water_type %></p>
-              </div>
-              <div class="col-xs-3">
-                <p><strong>Equipments :</strong></p>
-                <p><%= @pool.equipments %></p>
               </div>
             </div>
           </div>
