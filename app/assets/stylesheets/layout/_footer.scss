@@ -1,7 +1,43 @@
 // Your footer style
 
+/* Footer design */
+.footer {
+  background-color: #333333;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
 
-#footer {
-  background-color:grey;
-  height: 150px;
+.footer p {
+  color: #CCCCCC;
+  margin: 0 auto;
+}
+
+
+.footer a {
+  color: #CCCCCC;
+  font-size: 20px;
+  letter-spacing: 7px;
+  transition: 0.5s;
+}
+
+#fbhover:hover {
+  color: #46629E;
+}
+
+#insthover:hover {
+  color: brown;
+}
+
+#twhover:hover {
+  color: #00ACED;
+}
+
+#ythover:hover {
+  color: #DA2625;
+}
+
+#footer-text {
+  margin-top: 18px;
 }
