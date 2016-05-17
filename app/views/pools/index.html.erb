@@ -1,20 +1,18 @@
 <h1 class="text-center">Pools</h1>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-lg-8">
-      <% @pools.each do |pool| %>
-        <div class="col-xs-12 col-sm-6 col-lg-4">
-          <%= render "pool_card", pool: pool %>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-lg-4">
-      <div id="map"></div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-8">
+        <% @pools.each do |pool| %>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <%= render "pool_card", pool: pool %>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-4">
+        <div id="map"></div>
+      </div>
     </div>
   </div>
-</div>
-
 <script>
   function initMap() {
     var mapDiv = document.getElementById('map');
