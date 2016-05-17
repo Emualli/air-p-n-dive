@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160516143948) do
+ActiveRecord::Schema.define(version: 20160517091200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,8 +30,7 @@ ActiveRecord::Schema.define(version: 20160516143948) do
     t.integer  "pool_id"
     t.integer  "user_id"
     t.string   "status"
-    t.string   "start_date"
-    t.string   "end_date"
+    t.string   "date"
     t.integer  "price"
     t.integer  "booking_rating"
     t.text     "booking_comment"
@@ -39,6 +38,8 @@ ActiveRecord::Schema.define(version: 20160516143948) do
     t.text     "customer_comment"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "start_time"
+    t.string   "end_time"
   end
 
   add_index "bookings", ["pool_id"], name: "index_bookings_on_pool_id", using: :btree
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(version: 20160516143948) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
+    t.string   "title"
   end
 
   add_index "pools", ["user_id"], name: "index_pools_on_user_id", using: :btree
