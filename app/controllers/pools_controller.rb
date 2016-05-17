@@ -22,7 +22,11 @@ class PoolsController < ApplicationController
 
   def update
     find_pool
-    @restaurant.update(params[:restaurant])
+    if @pool.update(pool_params)
+      redirect_to pool_path(@pool)
+    else
+      render :edit
+    end
   end
 
   def new
@@ -47,7 +51,7 @@ class PoolsController < ApplicationController
   end
 
   def pool_params
-    params.require(:pool).permit(:user_id, :width, :length, :depth, :shape, :location, :water_type, :latitude, :longitude, :equipments, :price, :description, :status)
+    params.require(:pool).permit(:user_id, :width, :length, :depth, :shape, :location, :water_type, :latitude, :longitude, :equipments, :price, :description, :status, :title)
   end
 
   def search_pools_by_location
