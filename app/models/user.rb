@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :bookings
   has_many :pools
+  has_attachment :avatar
 end

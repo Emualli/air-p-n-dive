@@ -4,3 +4,6 @@
 //= require_tree .
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker/core
+//= require jquery-fileupload/basic
+//= require cloudinary/jquery.cloudinary
+//= require attachinary
