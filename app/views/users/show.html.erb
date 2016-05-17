@@ -10,6 +10,7 @@
       <%= f.input :address, input_html: { value: "#{@user.address}" } %>
       <%= f.input :bio, input_html: { value: "#{@user.bio}" } %>
       <%= f.input :phone, input_html: { value: "#{@user.phone}" } %>
+      <%= f.input :avatar, as: :attachinary %>
       <%= f.button :submit %>
     <% end %>
   </div>
