@@ -6,4 +6,17 @@ $(document).ready(function(){
     format: 'dd/mm/yyyy',
     startDate: '-3d'
   });
+
+  $('.tab').on('click', function() {
+    $('.tab').removeClass('active');
+    $(this).addClass('active');
+  });
+  $('#customer').on('click', function() {
+    $('#display_customer').addClass('active');
+    $('#display_owner').removeClass('active');
+  });
+  $('#owner').on('click', function() {
+    $('#display_customer').removeClass('active');
+    $('#display_owner').addClass('active');
+  });
 });
