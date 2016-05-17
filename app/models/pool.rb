@@ -4,7 +4,7 @@ class Pool < ActiveRecord::Base
   has_many :bookings
 
   def average_rating
-    bookings.map(&:booking_rating).reduce(:+).fdiv(bookings.size) unless bookings.empty?
+    bookings.map(&:booking_rating).reject(&:nil?).reduce(:+).fdiv(bookings.size)
   end
 
   def nb_booking_comment
