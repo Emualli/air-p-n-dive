@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
   has_many :bookings
   has_many :pools
   has_attachment :avatar
+
+  # validates :first_name, :last_name, :birth_date, :address, :phone, :email, presence: true
 end
