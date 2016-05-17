@@ -14,6 +14,7 @@
     <p class="notice" style='display:none'><%= notice %></p> <!-- --TODO-- See how to display those classes properly -->
     <p class="alert" style='display:none'><%= alert %></p>
     <%= yield %>
+    <%= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
   </body>
 </html>
