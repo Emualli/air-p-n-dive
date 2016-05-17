@@ -10,8 +10,9 @@
 .tabs {
   background: #CCCCCC;
   display: flex;
-  padding: 10px 10px 0 10px
+  padding: 10px 10px 0 10px;
 }
+
 .tabs a {
   color: white;
 }
@@ -44,4 +45,20 @@
 .tab.active {
   background: white;
   color: black;
+}
+#grey_container {
+  background: #CCCCCC;
+  width: 100%;
+}
+.main-booking.active {
+  padding: 0 10px 0 10px;
+  display: block;
+}
+.main-booking {
+  display:none;
+  padding: 0 10px 0 10px;
+}
+
+.content {
+  background-color: white;
 }

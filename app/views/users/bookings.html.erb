@@ -1,19 +1,43 @@
 <div class="container-full">
   <div class="tabs">
-    <a class="tab active" href="#">
+    <a class="tab active" id="customer" href="#">
       <h3>My Bookings</h3>
     </a>
-    <a class="tab" href="#">
-      <h3>Customer</h3>
+    <a class="tab" id="owner" href="#">
+      <h3>My Reservations</h3>
     </a>
+  </div>
+  <div class="container-full" id="grey_container">
+    <div class="main-booking active" id='display_customer'>
+      <div class="content">
+      Customer bookings :<br>
+      <% @customer_bookings.each do |booking| %>
+        Booking ID : <%= booking.id %><br>
+        Customer First name : <%= booking.user.first_name %><br>
+        Customer Last name : <%= booking.user.last_name %><br>
+        Owner First name : <%= booking.pool.user.first_name %><br>
+        Owner Last name : <%= booking.pool.user.last_name %><br><br>
+      <% end %>
+      </div>
+    </div>
+    <div class="main-booking" id='display_owner'>
+      <div class="content">
+      Owner bookings :<br>
+      <% @owner_bookings.each do |booking| %>
+        Booking ID : <%= booking.id %><br>
+        Customer First name : <%= booking.user.first_name %><br>
+        Customer Last name : <%= booking.user.last_name %><br>
+        Owner First name : <%= booking.pool.user.first_name %><br>
+        Owner Last name : <%= booking.pool.user.last_name %><br><br>
+      <% end %>
+      </div>
+    </div>
   </div>
 </div>
 
 
 
 
-<% @bookings.each do |booking| %>
-Booking ID : <%= booking.id %><br>
-Booking First name : <%= booking.user.first_name %><br>
-Booking First name : <%= booking.user.last_name %><br><br>
-<% end %>
+
+
+
