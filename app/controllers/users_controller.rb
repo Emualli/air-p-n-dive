@@ -26,6 +26,7 @@ class UsersController < ApplicationController
 
   def pools
     @pools = Pool.where("user_id = #{current_user.id}")
+    @pool = Pool.new
   end
 
 private
