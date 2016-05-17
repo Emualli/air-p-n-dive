@@ -1,0 +1,45 @@
+.banner {
+  height: 350px;
+  background: cover;
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  color: rgb(30, 30, 30);
+  transition: all 0.3s;
+}
+
+.profile-picture {
+  flex: 0 0 15%;
+  padding-right: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.pool-infos {
+  flex: 1 0 auto;
+  padding-top: 15px;
+}
+
+h1, h3 {
+  font-size: 25px;
+  color : rgb(60, 60, 60);
+}
+
+p {
+  font-size: 12px;
+  color : rgb(130, 130, 130);
+}
+
+.description {
+  background-color: rgb(230, 230, 230);
+  border: color rgb(200, 200, 200) solid 1px;
+}
+
+.paddind-summary {
+  padding: 10px;
+}

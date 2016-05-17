@@ -1,11 +1,66 @@
 <!-- app/views/pools/show.html.erb -->
-<div class="container">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));">
+</div>
+<div class="container paddind-summary">
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-      <%= render "pools/pool_card", pool: @pool %>
+    <div class="col-xs-12 col-sm-8">
+      <div class="summary">
+        <div class="profile-picture text-center">
+          <%= image_tag('avatar.jpg', class: 'avatar-large') %>
+          <p><%= @pool.user.first_name %></p>
+        </div>
+        <div class="pool-description">
+          <h1><%= @pool.title %></h1>
+          <p><%= @pool.location %>&nbsp&nbsp&nbsp<% 2 * @pool.average_rating.round.times do %>
+            <i class="fa fa-star" style="color: #EEBD2D" aria-hidden="true"></i>
+          <% end %>
+          <% (5 - @pool.average_rating.round).times do %>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+          <% end %>
+          </p>
+          <div class="row text-center pool-infos">
+            <div class="col-xs-4">
+              <p><strong>Dimensions :</strong></p>
+              <p>
+                <%= @pool.width %> x <%= @pool.length %> x <%= @pool.depth %>m
+              </p>
+            </div>
+            <div class="col-xs-4">
+              <p><strong>Shape: </strong></p>
+              <p><%= @pool.shape %></p>
+            </div>
+            <div class="col-xs-4">
+              <p><strong>Water type :</strong></p>
+              <p><%= @pool.water_type %></p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div id="test">
+    <div class="col-xs-12 col-sm-4">
       <%= render "bookings/bookingform", pool: @pool %>
     </div>
   </div>
+</div>
+<div class="description">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-8">
+      <h3><strong>About this pool</strong></h3>
+        <p><%= @pool.description %></p>
+        <p>
+          Equipments : <%= @pool.equipments %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <h3><%= @pool.nb_booking_comment %> commentaire(s)&nbsp&nbsp&nbsp<% 2 * @pool.average_rating.round.times do %>
+            <i class="fa fa-star" style="color: #EEBD2D" aria-hidden="true"></i>
+          <% end %>
+          <% (5 - @pool.average_rating.round).times do %>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+          <% end %></h3>
+
 </div>
