@@ -6,3 +6,6 @@ tmp/*
 .DS_Store
 public/assets
 db-schema.xml
+
+# Ignore application configuration
+/config/application.yml
