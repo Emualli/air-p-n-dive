@@ -56,7 +56,7 @@ class PoolsController < ApplicationController
   end
 
   def pool_params
-    params.require(:pool).permit(:user_id, :width, :length, :depth, :shape, :location, :water_type, :latitude, :longitude, :equipments, :price, :description, :status, :title, photos: [])
+    params.require(:pool).permit(:user_id, :width, :length, :depth, :shape, :location, :water_type, :address, :latitude, :longitude, :equipments, :price, :description, :status, :title, photos: [])
   end
 
   def search_pools_by_location

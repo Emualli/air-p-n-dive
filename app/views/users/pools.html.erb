@@ -5,7 +5,7 @@ Latitude : <%= pool.latitude %> - Longitude : <%= pool.longitude %><br>
 Price : <%= pool.price %><br>
 <% end %>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add a Pool</button>
+<button type="button" id="create_pool" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add a Pool</button>
 
 
 <!-- Modal -->
@@ -21,8 +21,8 @@ Price : <%= pool.price %><br>
           <%= f.error_notification %>
           <%= f.input :title %>
           <%= f.input :description %>
-          <%= f.input :address %>
-          <%= f.input :location %>
+          <%= f.input "address", input_html: { id: "user_input_autocomplete_address", placeholder: "Start typing your address..." } %>
+          <%= f.input :location, as: :hidden, input_html: { id: "locality" } %>
           <div class="button-inline">
             <%= f.input :width %>
             <%= f.input :length %>
@@ -46,7 +46,5 @@ Price : <%= pool.price %><br>
 </div>
 
 
-<!-- Include Google Maps JS API -->
-<script type="text/javascript"
-  src="https://maps.googleapis.com/maps/api/js?libraries=places&key=PUT_YOUR_OWN_KEY_HERE">
-</script>
+>
+
