@@ -5,7 +5,7 @@ Latitude : <%= pool.latitude %> - Longitude : <%= pool.longitude %><br>
 Price : <%= pool.price %><br>
 <% end %>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add a Pool</button>
+<button type="button" id="create_pool" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add a Pool</button>
 
 
 <!-- Modal -->
@@ -21,7 +21,8 @@ Price : <%= pool.price %><br>
           <%= f.error_notification %>
           <%= f.input :title %>
           <%= f.input :description %>
-          <%= f.input :location %>
+          <%= f.input "address", input_html: { id: "user_input_autocomplete_address", placeholder: "Start typing your address..." } %>
+          <%= f.input :location, as: :hidden, input_html: { id: "locality" } %>
           <div class="button-inline">
             <%= f.input :width %>
             <%= f.input :length %>
@@ -30,16 +31,27 @@ Price : <%= pool.price %><br>
           <div class="button-inline">
             <%= f.input :shape %>
             <%= f.input :water_type %>
-          <%= f.input :price %>
+            <%= f.input :price %>
           </div>
           <%= f.input :equipments %>
           <%= f.input :photos, as: :attachinary %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <%= f.button :submit, class: 'btn btn-success' %>
+          <%= f.button :submit, class: 'btn btn-success', id: 'submit-button' %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
+
+
+<% content_for :after_js do %>
+  <%= javascript_tag do %>
+  $(document).ready(function(){
+    if ( <%= !@show_modale.nil? %> ){
+      $('#myModal').modal('show');
+    };
+  });
+  <% end %>
+<% end %>

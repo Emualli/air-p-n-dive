@@ -14,8 +14,14 @@
     <p class="notice" style='display:none'><%= notice %></p> <!-- --TODO-- See how to display those classes properly -->
     <p class="alert" style='display:none'><%= alert %></p>
     <%= yield %>
+
     <%= render 'shared/footer' %>
+
+    <%= javascript_include_tag "https://maps.google.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_MAPS_BROWSER_KEY']}" %>
+    <%= javascript_include_tag "https://cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js" %>
     <%= javascript_include_tag 'application' %>
     <%= cloudinary_js_config %>
+    <%= yield :after_js %>
+
   </body>
 </html>
