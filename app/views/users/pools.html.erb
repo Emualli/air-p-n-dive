@@ -1,10 +1,10 @@
 <div class="container" style="padding-bottom: 20px">
   <div class="row">
     <div class="col-xs-12 col-md-8 col-md-offset-2">
+      <button type="button" id="create_pool" class="btn btn-primary" style="width: 100%; margin-bottom: 10px;" data-toggle="modal" data-target="#myModal">Add a pool</button>
       <% @pools.each do |pool| %>
         <%= render "pools/owner_pool_card", pool: pool %>
       <% end %>
-      <button type="button" id="create_pool" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add a pool</button>
     </div>
   </div>
 </div>
@@ -35,7 +35,7 @@
             <%= f.input :price %>
           </div>
           <%= f.input :equipments %>
-          <%= f.input :photos, as: :attachinary %>
+          <%= f.input :photos, as: :attachinary, class: 'list-unstyled' %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
