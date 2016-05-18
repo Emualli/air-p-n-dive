@@ -1,0 +1,26 @@
+<div class="card-container">
+  <%= link_to pool_path(pool), :class => "card-link" do %>
+  <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= pool.photos? ? cl_image_path(pool.photos.first.path) : image_path('barcelona_pool.jpg') %>);">
+  </div>
+  <div class="card-footer">
+    <h5><%= pool.title %></h5>
+    <p><%= pool.description %></p>
+    <div class="rating">
+      <% unless pool.average_rating.nil? then pool.average_rating.round.times do %>
+        <i class="fa fa-star" aria-hidden="true"></i>
+      <% end %>
+      <% (5 - pool.average_cocktail.rating.round).times do %>
+        <i class="fa fa-star-o" aria-hidden="true"></i>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="price-tag">
+    <p><%= pool.price %> €</p>
+  </div>
+  <% end %>
+  <div class="edit-link">
+<!--     <button type="button" id="<%= pool.id %>" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Edit my pool</button> -->
+  <%= link_to "Edit my pool", user_my_pools_path(current_user) + "?pool_id=#{pool.id}"  %>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 class PoolsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :index, :show]
-  before_action :find_pool, only: [:show, :edit, :update, :destroy]
+  before_action :find_pool, only: [:show, :edit, :update]
 
   def index
 
@@ -28,11 +28,9 @@ class PoolsController < ApplicationController
   end
 
   def edit
-    find_pool
   end
 
   def update
-    find_pool
     if @pool.update(pool_params)
       redirect_to pool_path(@pool)
     else
@@ -55,6 +53,10 @@ class PoolsController < ApplicationController
       @pools = Pool.where("user_id = #{current_user.id}")
       render "users/pools"
     end
+  end
+
+  def initiate_pool(id)
+    @pool = Pool.find(id)
   end
 
   private
