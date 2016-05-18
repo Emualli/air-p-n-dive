@@ -18,7 +18,7 @@
                   <div class="booking-card-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= booking.pool.photos? ? cl_image_path(booking.pool.photos.first.path) : image_path('barcelona_pool.jpg') %>); background-size: cover; background-position: center;">
                   </div>
                   <div>
-                    <%= booking.pool.user.avatar? ? cl_image_path(booking.pool.user.avatar.path, class: 'avatar-owner avatar-large') : image_tag(image_path('avatar.jpg'), class: 'avatar-owner avatar-large') %>
+
                   </div>
                   <br>
                   <br>
