@@ -25,7 +25,8 @@
               </div>
               <div class="col-xs-4">
                 <p><%= booking.get_status_msg %></p>
-                <%= button_to 'Cancel', {controller: "bookings", action: "update", id: booking.id, status: "cancel"}, method: :post, class: "btn btn-primary" %>
+                <%= button_to 'Cancel this booking ?', booking_cancel_path(booking), method: :post, class: "btn btn-primary" %>
+                <%= button_to 'Pay this booking ?', booking_pay_path(booking), method: :post, class: "btn btn-primary" %>
               </div>
             </div>
           </div>

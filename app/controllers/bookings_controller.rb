@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :edit, :update]
+  before_action :set_booking, only: [:show, :edit, :update, :cancel, :pay]
 
   def new
     @booking = Booking.new
@@ -31,21 +31,35 @@ class BookingsController < ApplicationController
     set_booking
     @booking.user = current_user
     @booking.pool = @pool
-    if @booking.update(booking_params)
-      redirect_to booking_path(@booking)
-    else
-      render :edit
-    end
+    @booking.update(booking_params)
+    redirect_to booking_path(@booking)
+  end
+
+  def cancel
+    @booking.status = "cancelled"
+    @booking.save
+
+    redirect_to booking_path(@booking)
+  end
+
+  def pay
+    @booking.status = "paid"
+    @booking.save
+
+    redirect_to booking_path(@booking)
   end
 
   private
 
   def set_booking
-    @booking = Booking.find(params[:id])
+    unless params[:id].nil?
+      @booking = Booking.find(params[:id])
+    else
+      @booking = Booking.find(params[:booking_id])
+    end
   end
 
   def booking_params
     params.require(:booking).permit(:status, :start_time, :end_time, :price, :pool_id)
   end
-
 end
