@@ -3,6 +3,8 @@ class PoolsController < ApplicationController
   before_action :find_pool, only: [:show, :edit, :update]
 
   def index
+    # Let's DYNAMICALLY build the markers for the view.
+
     if !params.has_key?(:location) || params[:location].empty?
       @pools = Pool.all
     else
@@ -13,6 +15,10 @@ class PoolsController < ApplicationController
       reservation_string = params[:reservation_date].gsub('%2F','/')
       @reservation_date = date_string_to_date(reservation_string)
       @pools = fetch_pools_by_availability
+    end
+    @markers = Gmaps4rails.build_markers(@flats) do |flat, marker|
+      marker.lat flat.latitude
+      marker.lng flat.longitude
     end
   end
 
@@ -45,7 +51,9 @@ class PoolsController < ApplicationController
     if @pool.save
       redirect_to pool_path(@pool)
     else
-      render :new
+      @show_modale = true
+      @pools = Pool.where("user_id = #{current_user.id}")
+      render "users/pools"
     end
   end
 

@@ -38,10 +38,20 @@ Price : <%= pool.price %><br>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <%= f.button :submit, class: 'btn btn-success' %>
+          <%= f.button :submit, class: 'btn btn-success', id: 'submit-button' %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
 
+
+<% content_for :after_js do %>
+  <%= javascript_tag do %>
+  $(document).ready(function(){
+    if ( <%= !@show_modale.nil? %> ){
+      $('#myModal').modal('show');
+    };
+  });
+  <% end %>
+<% end %>
