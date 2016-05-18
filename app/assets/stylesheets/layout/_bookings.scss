@@ -3,3 +3,23 @@
   font-size: 12px;
   color: rgb(30, 30, 30);
 }
+
+.photo-pool {
+  height: 175px;
+  width: 300px;
+}
+
+.avatar-owner {
+  position: absolute;
+  right: 50px;
+  top: 65px;
+}
+
+.bookings-card {
+  height: 175px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  color: white;
+  position: relative;
+  margin-bottom: 80px;
+}
