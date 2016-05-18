@@ -11,7 +11,7 @@
   </div>
 </div>
 <div>
-  <%= f.hidden_field :pool_id, value: params[:id] %>
+  <%= f.hidden_field :pool_id, value: params[:id] || @booking.pool_id %>
   <%= f.button :submit, "Book now!", class: "btn btn-danger", style: 'width:100%' %>
 </div>
 <% end %>

@@ -21,9 +21,9 @@ class BookingsController < ApplicationController
 
 
     if @booking.isValidForSaving? && @booking.save
-      redirect_to pool_path
+      redirect_to user_bookings_path(current_user.id)
     else
-      redirect_to '/'
+      render 'pools/show'
     end
   end
 
