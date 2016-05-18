@@ -11,10 +11,10 @@
   </div>
 </div>
 <div>
-  <%= f.hidden_field :price, value: @pool.price %>
-  <%= f.hidden_field :status, value: "created" %>
   <%= f.hidden_field :pool_id, value: params[:id] %>
   <%= f.button :submit, "Book now!", class: "btn btn-danger", style: 'width:100%' %>
 </div>
 <% end %>
+
+<!-- --TODO-- find a way to secure the transaction without passing pool_id in hidden field -->
 

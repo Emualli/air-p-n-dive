@@ -10,13 +10,20 @@ class BookingsController < ApplicationController
   end
 
   def create
+    # Create Booking Instance with proper parameters
     @booking = Booking.new(booking_params)
+    @pool = Pool.find(params[:booking][:pool_id])
+
+    @booking.status = "created"
     @booking.user = current_user
     @booking.price = @pool.price
-    if @booking.save
-      redirect_to booking_path(@booking)
+    @booking.pool = @pool
+
+
+    if @booking.isValidForSaving? && @booking.save
+      redirect_to pool_path
     else
-      render :new
+      redirect_to '/'
     end
   end
 
@@ -46,7 +53,7 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:status, :start_date, :end_date, :price, :pool_id)
+    params.require(:booking).permit(:pool_id, :date, :start_time, :end_time)
   end
 
 end
