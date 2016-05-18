@@ -26,7 +26,12 @@ class UsersController < ApplicationController
 
   def pools
     @pools = Pool.where("user_id = #{current_user.id}")
-    @pool = Pool.new
+    if params.has_key?(:pool_id)
+      @pool = Pool.find(params[:pool_id].to_i)
+      @show_modale = true
+    else
+      @pool = Pool.new
+    end
   end
 
 private
