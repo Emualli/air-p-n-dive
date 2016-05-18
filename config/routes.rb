@@ -7,5 +7,10 @@ Rails.application.routes.draw do
     get 'bookings' => 'users#bookings'
     get 'my-pools' => 'users#pools'
   end
-  resources :bookings, except: [:destroy]
+  resources :bookings, except: [:destroy] do
+    post 'cancel' => 'bookings#cancel'
+    post 'pay' => 'bookings#pay'
+    post 'accept' => 'bookings#accept'
+    post 'reject' => 'bookings#reject'
+  end
 end

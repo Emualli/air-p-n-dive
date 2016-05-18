@@ -1,23 +1,53 @@
 <div class="container-full">
   <div class="tabs">
     <a class="tab active" id="customer" href="#">
-      <h3>My Bookings</h3>
+      <h3>Your Dives</h3>
     </a>
     <a class="tab" id="owner" href="#">
-      <h3>My Reservations</h3>
+      <h3>Your pool requests</h3>
     </a>
   </div>
   <div class="container-full" id="grey_container">
     <div class="main-booking active" id='display_customer'>
-      <div class="content">
-      Customer bookings :<br>
-      <% @customer_bookings.each do |booking| %>
-        Booking ID : <%= booking.id %><br>
-        Customer First name : <%= booking.user.first_name %><br>
-        Customer Last name : <%= booking.user.last_name %><br>
-        Owner First name : <%= booking.pool.user.first_name %><br>
-        Owner Last name : <%= booking.pool.user.last_name %><br><br>
-      <% end %>
+      <div class="booking-cards">
+        <div class="container">
+          <div class="row">
+            <% @customer_bookings.each do |booking| %>
+              <div class="col-xs-12 col-sm-6">
+                <div class="booking-card">
+                  <div class="booking-card-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= booking.pool.photos? ? cl_image_path(booking.pool.photos.first.path) : image_path('barcelona_pool.jpg') %>); background-size: cover; background-position: center;">
+                  </div>
+                  <div>
+                    <%= booking.pool.user.avatar? ? cl_image_path(booking.pool.user.avatar.path, class: 'avatar-owner avatar-large') : image_tag(image_path('avatar.jpg'), class: 'avatar-owner avatar-large') %>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="booking-card-category">
+                    <p><%= booking.pool.title %></p>
+                  </div>
+                  <div class="booking-card-description text-center">
+                    <strong><p><%= booking.pool.location %></p>
+                    <p><%= booking.date %> - starts at <%= booking.start_time %> - ends at <%= booking.end_time %></p></strong>
+                  </div>
+                  <div class="booking-card-msg text-center">
+                    <p><%= booking.get_status_msg %></p>
+                    <div class="booking-card-button">
+                      <% if booking.status == "accepted" %>
+                        <%= button_to 'Pay this booking ?', booking_pay_path(booking), method: :post, class: "btn btn-primary" %>
+                      <% end %>
+                    </div>
+                    <div class="booking-card-button">
+                      <% if booking.status == "created" || booking.status == "accepted" %>
+                        <%= button_to 'Cancel this booking ?', booking_cancel_path(booking), method: :post, class: "btn btn-danger" %>
+                      <% end %>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
     <div class="main-booking" id='display_owner'>
@@ -29,6 +59,7 @@
         Customer Last name : <%= booking.user.last_name %><br>
         Owner First name : <%= booking.pool.user.first_name %><br>
         Owner Last name : <%= booking.pool.user.last_name %><br><br>
+        Booking status : <%= booking.status %><br><br>
       <% end %>
       </div>
     </div>
