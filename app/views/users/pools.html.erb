@@ -21,6 +21,7 @@ Price : <%= pool.price %><br>
           <%= f.error_notification %>
           <%= f.input :title %>
           <%= f.input :description %>
+          <%= f.input :address %>
           <%= f.input :location %>
           <div class="button-inline">
             <%= f.input :width %>
@@ -43,3 +44,9 @@ Price : <%= pool.price %><br>
     </div>
   </div>
 </div>
+
+
+<!-- Include Google Maps JS API -->
+<script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?libraries=places&key=PUT_YOUR_OWN_KEY_HERE">
+</script>
