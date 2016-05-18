@@ -15,7 +15,7 @@
           <p><%= @pool.user.first_name %></p>
         </div>
         <div class="pool-description">
-          <h1 class="card-category"><%= @pool.title %></h1>
+          <h1><%= @pool.title %></h1>
           <p><%= @pool.location %>&nbsp;&nbsp;&nbsp;<% unless @pool.average_rating.nil? then @pool.average_rating.round.times do %>
             <i class="fa fa-star" style="color: #EEBD2D" aria-hidden="true"></i>
           <% end %>
