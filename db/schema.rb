@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160517134857) do
+ActiveRecord::Schema.define(version: 20160518071024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,8 +68,8 @@ ActiveRecord::Schema.define(version: 20160517134857) do
     t.string   "shape"
     t.string   "location"
     t.string   "water_type"
-    t.string   "longitude"
-    t.string   "latitude"
+    t.integer  "longitude"
+    t.integer  "latitude"
     t.string   "equipments"
     t.text     "description"
     t.integer  "price"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20160517134857) do
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
     t.string   "title"
+    t.string   "address"
   end
 
   add_index "pools", ["user_id"], name: "index_pools_on_user_id", using: :btree

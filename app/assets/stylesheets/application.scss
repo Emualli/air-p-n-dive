@@ -7,6 +7,10 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "bootstrap-datepicker3";
+@import "bookings";
+@import 'bootstrap-sprockets';
+@import 'bootstrap-datetimepicker';
 
 // Your CSS
 @import "layout/index";
@@ -14,5 +18,4 @@
 @import "pages/index";
 @import "vendor/index";
 
-@import "bootstrap-datepicker3";
-@import "bookings";
+
