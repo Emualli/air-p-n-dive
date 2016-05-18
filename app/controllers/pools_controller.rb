@@ -1,9 +1,8 @@
 class PoolsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :index, :show]
-  before_action :find_pool, only: [:show, :edit, :update]
+  before_action :find_pool, only: [:show, :edit, :update, :destroy]
 
   def index
-    # Let's DYNAMICALLY build the markers for the view.
 
     if !params.has_key?(:location) || params[:location].empty?
       @pools = Pool.all
@@ -16,9 +15,10 @@ class PoolsController < ApplicationController
       @reservation_date = date_string_to_date(reservation_string)
       @pools = fetch_pools_by_availability
     end
-    @markers = Gmaps4rails.build_markers(@flats) do |flat, marker|
-      marker.lat flat.latitude
-      marker.lng flat.longitude
+    # Let's DYNAMICALLY build the markers for the view.
+    @markers = Gmaps4rails.build_markers(@pools) do |pool, marker|
+      marker.lat pool.latitude
+      marker.lng pool.longitude
     end
   end
 
