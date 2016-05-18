@@ -7,7 +7,7 @@
           <p><%= booking.user.first_name %></p>
         </div>
         <div class="review-content">
-          <p><%= booking.date %>&nbsp;&nbsp;&nbsp;<%  unless @pool.average_rating.nil? then booking.booking_rating.times do %>
+          <p><%= booking.date %>&nbsp;&nbsp;&nbsp;<%  unless booking.booking_rating.nil? then booking.booking_rating.times do %>
               <i class="fa fa-star" style="color: #EEBD2D" aria-hidden="true"></i>
             <% end %>
             <% (5 - booking.booking_rating).times do %>
