@@ -21,8 +21,7 @@ class Booking < ActiveRecord::Base
     # all_bookings_for_this_pool = Booking.where("pool_id = ?", pool.id)
   end
 
-  def instancifyDate
-    date = self.date
+  def instancifyDate(date)
     date_array = date.split('/').map { |d| d.to_i }
     Date.new(date_array[2], date_array[1], date_array[0])
   end
