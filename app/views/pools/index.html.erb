@@ -1,18 +1,24 @@
-<h1 class="text-center">Pools</h1>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-8">
+<div class="container-fluid pool-cards">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-8 nopadding">
+      <div class="col-xs-12 nopadding">
+        <div class="header-filter">
+          <%= render 'search_form' %>
+        </div>
+      </div>
+      <div class="col-xs-12 v-scroll nopadding">
         <% @pools.each do |pool| %>
-          <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="col-xs-12 col-sm-6 col-md-6 pool-card" id="<%= pool.id %>">
             <%= render "pool_card", pool: pool %>
           </div>
         <% end %>
       </div>
-      <div class="col-xs-12 col-sm-12 col-md-4">
-        <div id="map"></div>
-      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 nopadding">
+      <div id="map"></div>
     </div>
   </div>
+</div>
 
 
 <% content_for(:after_js) do %>
@@ -25,12 +31,30 @@
         handler.fitMapToBounds();
       });
 
+      $('#search-submit').on('click', function(e){
+        e.preventDefault();
+        var my_url = window.location['origin'] + '/searchjson?' + 'location=' + $('#location').val() + '&'+ 'max_price=' + $('#max-price').val() ;
+        console.log(my_url);
+        $.ajax({
+          type: "GET",
+          url: my_url,
+          success: function(data) {
+            var hash_pool = JSON.parse(data);
+            hash_pool.forEach(function(e){
+              console.log(this);
+            })
+          },
+          error: function(jqXHR) {
+            console.error(jqXHR.responseText);
+          }
+        });
+      });
 
       $('.avatar-bordered').on('click', function (e){
         e.preventDefault();
         window.location.replace(window.location['origin'] + '/users/' + this.id);
       });
-    })
+    });
   <% end %>
 <% end %>
 

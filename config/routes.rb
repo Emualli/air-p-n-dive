@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :pools, except: [:destroy] do
     get 'agendas' => 'pools#availibility'
   end
+  get 'searchjson' => 'pools#searchjson'
   resources :users, except: [:index, :destroy] do
     get 'bookings' => 'users#bookings'
     get 'my-pools' => 'users#pools'
