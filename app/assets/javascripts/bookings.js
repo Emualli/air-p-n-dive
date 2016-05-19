@@ -4,7 +4,8 @@
 $(document).ready(function(){
   $('#booking_date').datepicker({
     format: 'dd/mm/yyyy',
-    startDate: '-3d'
+    startDate: '-3d',
+    datesDisabled: ['15/05/2016', '25/05/2016']
   });
 
   $('.tab').on('click', function() {
