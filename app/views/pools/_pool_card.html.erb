@@ -17,7 +17,7 @@
   </div>
   <div class="card-avatar">
     <% if pool.user.avatar? %>
-      <%= cl_image_tag pool.user.avatar.path, class: 'avatar-bordered' %>
+      <%= cl_image_tag pool.user.avatar.path, class: 'avatar-bordered', id: pool.user.id %>
     <% end %>
   </div>
   <div class="price-tag">
