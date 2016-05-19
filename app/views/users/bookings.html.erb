@@ -78,7 +78,7 @@
         <div class="booking-avatar-owner">
           <% @owner_bookings.each do |booking| %>
             <% if (booking.status != "accepted" && booking.status != "paid" && booking.status != "created") then %>
-              <p><%= booking.status %></p>
+              <%= render 'users/bookings_owner_past', booking: booking %>
             <% end %>
           <% end %>
         </div>

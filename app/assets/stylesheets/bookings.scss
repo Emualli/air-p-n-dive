@@ -134,18 +134,19 @@
   justify-content: space-between;
 
   p {
-    margin-bottom: 0;
+    margin: 0;
   }
   background-color: #CCCCCC;
   border-radius: 4px;
+  align-items: center;
 }
 
 .status-owner-line {
   margin-left: 50px;
-  height: 28px;
 }
 
 .content-owner-line {
+  margin-left: 20px;
   width: 50%;
 }
 
