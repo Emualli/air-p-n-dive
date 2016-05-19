@@ -121,7 +121,6 @@ $(document).ready(function(){
   });
 
 $("#new_booking").on('click', function(e) {
-  e.preventDefault();
   $('#date_error').hide();
 
   if ($('#booking_date').val() === "") {
@@ -135,8 +134,6 @@ $("#new_booking").on('click', function(e) {
    $(this).submit();
   }
 });
-
-
 
   $('.tab').on('click', function() {
     $('.tab').removeClass('active');
