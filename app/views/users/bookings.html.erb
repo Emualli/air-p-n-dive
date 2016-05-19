@@ -17,9 +17,6 @@
                 <div class="booking-card">
                   <div class="booking-card-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= booking.pool.photos? ? cl_image_path(booking.pool.photos.first.path) : image_path('barcelona_pool.jpg') %>); background-size: cover; background-position: center;">
                   </div>
-                  <div>
-
-                  </div>
                   <br>
                   <br>
                   <div class="booking-card-category">
@@ -51,7 +48,58 @@
       </div>
     </div>
     <div class="main-booking" id='display_owner'>
-      <div class="content">
+          <div class="new-bookings">
+            <h3 style="border-bottom: 1px solid #cacccd;">New</h3>
+            <div class="booking-avatar-owner">
+              <% @owner_bookings.each do |booking| %>
+                <% if booking.status == "created" then %>
+                  <div class="booking-owner-line">
+                    <div class="avatar-owner-line">
+                      <% if booking.pool.user.avatar? %>
+                        <%= cl_image_tag booking.pool.user.avatar.path, class: 'avatar-large' %>
+                      <% end %>
+                      <%= booking.user.first_name %>
+                    </div>
+                    <div class="pool-owner-line">
+                      <strong><%= booking.pool.title %></strong>
+                      <p><%= booking.pool.location %></p>
+                    </div>
+                    <div class="date-owner-line">
+                      <p><%= booking.date %></p>
+                      <p>From <%= booking.start_time %> to <%= booking.end_time %></p>
+                    </div>
+                    <div class="actions-owner-line">
+                      <p><%= booking.status %></p>
+                      <p><%= booking.get_status_msg %></p>
+                    </div>
+                    <div class="status-owner-line">
+                      <%= button_to 'Cancel this booking ?', booking_cancel_path(booking), method: :post, class: "btn btn-danger" %>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+          <div class="current-bookings">
+            <h3 style="border-bottom: 1px solid #cacccd;">Current</h3>
+            <div class="booking-avatar-owner">
+              <% @owner_bookings.each do |booking| %>
+                <% if (booking.status == "accepted" || booking.status == "paid") then %>
+                  <p><%= booking.status %></p>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+          <div class="past-bookings">
+            <h3 style="border-bottom: 1px solid #cacccd;">Past</h3>
+            <div class="booking-avatar-owner">
+              <% @owner_bookings.each do |booking| %>
+                <% if (booking.status != "accepted" && booking.status != "paid" && booking.status != "created") then %>
+                  <p><%= booking.status %></p>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
       Owner bookings :<br>
       <% @owner_bookings.each do |booking| %>
         Booking ID : <%= booking.id %><br>
@@ -61,11 +109,9 @@
         Owner Last name : <%= booking.pool.user.last_name %><br><br>
         Booking status : <%= booking.status %><br><br>
       <% end %>
-      </div>
     </div>
   </div>
 </div>
-
 
 
 
