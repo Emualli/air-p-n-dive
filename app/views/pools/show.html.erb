@@ -87,6 +87,8 @@ $(document).ready(function(){
   var agendas = <%= raw @agendas %>;
   var unavailable_slots = <%= raw @unavailable_slots.to_json %>;
 
+  if(agendas.length === 0) { $('#datepicker_error').show(); }
+
   $('#booking_date').datepicker({
     autoclose: true,
     format: 'dd/mm/yyyy',
@@ -96,6 +98,7 @@ $(document).ready(function(){
 
 
   $('#booking_date').on('change', function() {
+  $('#datepicker_error').hide();
   $('#customer_error').hide();
   $('#date_error').hide ();
   $('#time_error').hide();

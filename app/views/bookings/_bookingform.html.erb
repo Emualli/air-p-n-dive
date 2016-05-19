@@ -1,3 +1,4 @@
+<div class="col-xs-12" id="datepicker_error" style="display: none">Sorry, there are no available dates for this pool</div>
 <%= simple_form_for @booking do |f| %>
 
 <%= f.input :date, label: 'Book your pool for :', label_html: { class: 'label_form' }, placeholder: "Date" %>
@@ -16,13 +17,13 @@
     <div class="col-xs-4" id="timeslot"><div class="col-xs-12 timeslot unavailable" id='18'>18h - 20h</div></div>
   </div>
   </div></div>
-  <div class="col-xs-12" id="customer_error" style="display: none">Sorry, there are no available slots for this day.</div>
-  <div class="col-xs-12" id="date_error" style="display: none">Please fill in a date before validation</div>
-  <div class="col-xs-12" id="time_error" style="display: none">Please chose an available slot before validation</div>
   <div class="col-xs-12" id="hours-submit">
   <%= f.hidden_field :pool_id, value: params[:id] || @booking.pool_id %>
   <%= f.button :button, "Book now!", id: "submit_bookings", class: "btn btn-danger", style: 'width:100%' %>
   </div>
+  <div class="col-xs-12" id="customer_error" style="display: none">Sorry, there are no available slots for this day.</div>
+  <div class="col-xs-12" id="date_error" style="display: none">Please fill in a date before validation</div>
+  <div class="col-xs-12" id="time_error" style="display: none">Please chose an available slot before validation</div>
 </div>
 </div>
 </div>
