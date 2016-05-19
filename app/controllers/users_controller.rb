@@ -20,8 +20,9 @@ class UsersController < ApplicationController
     @owned_pools = Pool.where("user_id = #{current_user.id}")
     @owner_bookings = []
     @owned_pools.each do |pool|
-      @owner_bookings << Booking.find_by("pool_id =  ?", pool.id) if !Booking.find_by("pool_id =  ?", pool.id).nil?
+      @owner_bookings << Booking.where("pool_id = #{pool.id}") unless Booking.where("pool_id = #{pool.id}").nil?
     end
+    @owner_bookings.flatten!
   end
 
   def pools

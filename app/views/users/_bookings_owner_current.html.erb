@@ -1,0 +1,24 @@
+<div class="booking-owner-line">
+  <div>
+    <% if booking.pool.user.avatar? %>
+      <%= cl_image_tag booking.pool.user.avatar.path, class: 'avatar-large' %>
+    <% end %>
+  </div>
+  <div class="content-owner-line text-left">
+    <p>
+      <strong><%= booking.pool.user.first_name %></strong> booked
+      <strong><%= booking.pool.title %></strong> (<%= booking.pool.location %>)
+      on <%= booking.date %></strong> - from <%= booking.start_time %> to <%= booking.end_time %>
+    </p>
+  </div>
+  <div class="status-owner-line">
+    <% if booking.status == "paid" %>
+      <em><p>Payment received !</p></em>
+    <% else %>
+      <em><p>Currently awaiting payment from customer</p></em>
+    <% end %>
+  </div>
+  <div class="action-owner-line">
+    <%= button_to 'Cancel this booking ?', booking_cancel_path(booking), method: :post, class: "btn btn-danger" %>
+  </div>
+</div>

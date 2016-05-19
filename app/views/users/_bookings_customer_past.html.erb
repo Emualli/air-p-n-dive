@@ -1,0 +1,52 @@
+<div class="booking-owner-line">
+  <div>
+    <% if booking.user.avatar? %>
+      <%= cl_image_tag booking.user.avatar.path, class: 'avatar-large' %>
+    <% end %>
+  </div>
+  <div class="content-owner-line text-left">
+    <p>
+      You booked <strong><%= booking.pool.title %></strong> (<%= booking.pool.location %>)
+      on <%= booking.date %></strong> - from <%= booking.start_time %> to <%= booking.end_time %>
+    </p>
+  </div>
+  <div class="status-owner-line">
+    <% if booking.status == "rejected" %>
+      <em><p>Owner has rejected your request ! Too bad :(</p></em>
+    <% elsif booking.status == "cancelled" %>
+      <em><p>Your request has been cancelled !</p></em>
+    <% elsif booking.status == "closed" && booking.booking_comment.nil? %>
+      <em><p>Please, add a review on your customer</p></em>
+    <% else %>
+      <em><p>Thank you for your review !</p></em>
+    <% end %>
+  </div>
+  <div class="action-owner-line">
+    <% if booking.status == "closed" && booking.booking_comment.nil? %>
+      <button type="button" id="create_pool" class="btn btn-primary" style="width: 100%; margin-bottom: 10px;" data-toggle="modal" data-target="#reviewModalCustomer<%= booking.id %>">Add a review ?</button>
+    <% end %>
+    <br>
+  </div>
+</div>
+
+<div class="modal fade" id="reviewModalCustomer<%= booking.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Rate your customer and add a comment !</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for(booking) do |f| %>
+          <%= f.error_notification %>
+          <%= f.input :booking_rating %>
+          <%= f.input :booking_comment %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= f.button :submit, class: 'btn btn-success', id: 'submit-button' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

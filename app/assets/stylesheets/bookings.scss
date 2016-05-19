@@ -46,7 +46,7 @@
   background: white;
   color: black;
 }
-#grey_container {
+.grey_container {
   background: #CCCCCC;
   width: 100%;
 }
@@ -57,10 +57,7 @@
 .main-booking {
   display:none;
   padding: 0 10px 0 10px;
-}
-
-.content {
-  background-color: white;
+  background: #CCCCCC;
 }
 
 .label_form {
@@ -80,10 +77,6 @@
   left: 0;
   right: 0;
   top: 150px;
-}
-
-.booking-cards {
-  background-color: white;
 }
 
 .booking-card {
@@ -125,4 +118,38 @@
   border-top: 1px solid #cacccd;
   height: 60px;
   padding-top: 11px;
+}
+
+// owner
+
+.booking-owner-line {
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: space-between;
+
+  p {
+    margin: 0;
+  }
+  background-color: #CCCCCC;
+  border-radius: 4px;
+  align-items: center;
+}
+
+.status-owner-line {
+  margin-left: 50px;
+}
+
+.content-owner-line {
+  margin-left: 20px;
+  width: 50%;
+}
+
+.action-owner-line {
+  margin-left: 50px;
 }
