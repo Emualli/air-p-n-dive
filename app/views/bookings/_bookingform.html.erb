@@ -1,18 +1,30 @@
-<%= simple_form_for @booking do |f|%>
+<%= simple_form_for @booking do |f| %>
 
 <%= f.input :date, label: 'Book your pool for :', label_html: { class: 'label_form' }, placeholder: "Date" %>
-
+<%= f.hidden_field :start_time, label: 'Starting at :', label_html: { class: 'label_form' } %>
+<%= f.hidden_field :end_time, label: 'Ending at :', label_html: { class: 'label_form' } %>
+<div class="col-xs-12" id="hours-full-container">
 <div class="row">
-  <div class="col-xs-6">
-    <%= f.input :start_time, label: 'Starting at :', label_html: { class: 'label_form' } %>
-  </div>
-  <div class="col-xs-6">
-    <%= f.input :end_time, label: 'Ending at :', label_html: { class: 'label_form' } %>
+  <div class="col-xs-12" id="hourly-title">
+    Pick your reservation timeslot&nbsp;:
   </div>
 </div>
-<div>
+<div class="row">
+  <div class="col-xs-12" id="hours-container">
+    <div class="col-xs-4" id="timeslot"><div class="col-xs-12 timeslot unavailable" id='8'>8h - 10h</div></div><div class="col-xs-4" id="timeslot"><div class="col-xs-12 timeslot unavailable" id='10'>10h - 12h</div></div>
+    <div class="col-xs-4" id="timeslot"><div class="col-xs-12 timeslot unavailable" id='12'>12h - 14h</div></div><div class="col-xs-4" id="timeslot"><div class="col-xs-12 timeslot unavailable" id='14'>14h - 16h</div></div><div class="col-xs-4" id="timeslot"><div class="col-xs-12 timeslot unavailable" id='16'>16h - 18h</div></div>
+    <div class="col-xs-4" id="timeslot"><div class="col-xs-12 timeslot unavailable" id='18'>18h - 20h</div></div>
+  </div>
+  </div></div>
+  <div class="col-xs-12" id="customer_error" style="display: none">Sorry, there are no available slots for this day.</div>
+  <div class="col-xs-12" id="date_error" style="display: none">Please fill in a date before validation</div>
+  <div class="col-xs-12" id="time_error" style="display: none">Please chose an available slot before validation</div>
+  <div class="col-xs-12" id="hours-submit">
   <%= f.hidden_field :pool_id, value: params[:id] || @booking.pool_id %>
   <%= f.button :submit, "Book now!", class: "btn btn-danger", style: 'width:100%' %>
+  </div>
+</div>
+</div>
 </div>
 <% end %>
 

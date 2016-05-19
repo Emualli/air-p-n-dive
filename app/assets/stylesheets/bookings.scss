@@ -126,3 +126,87 @@
   height: 60px;
   padding-top: 11px;
 }
+
+#hourly-title {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+#hours-container {
+  border: 1px #CCCCCC solid;
+  border-radius: 3px;
+}
+
+#new_booking {
+  max-width: 360px;
+}
+
+#hours-submit {
+  padding-top: 15px;
+}
+
+#hours-submit > input {
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
+#hours-container {
+  padding: 0;
+}
+
+#hours-full-container {
+  display:none;
+}
+
+#timeslot {
+  padding: 3px;
+}
+
+.timeslot.available {
+  background-color: #9CFD5B;
+  color: #095700;
+  height: 100%;
+  display: inline-block;
+  font-size: 12px;
+  text-align:center;
+  cursor: pointer;
+}
+
+.timeslot.available.selected {
+  background-color: #105E00;
+  color: white;
+}
+
+.timeslot.unavailable {
+  background-color: #FF8E8B;
+  color: #890000;
+  height: 100%;
+  display: inline-block;
+  font-size: 12px;
+  text-align:center;
+}
+
+#customer_error {
+  font-size: 12px;
+  font-weight: 800;
+  color: #890000;
+  text-align:center;
+}
+
+#date_error {
+  font-size: 12px;
+  font-weight: 800;
+  color: #890000;
+  text-align:center;
+}
+
+#time_error {
+  font-size: 12px;
+  font-weight: 800;
+  color: #890000;
+  text-align:center;
+}
+
+
+
+

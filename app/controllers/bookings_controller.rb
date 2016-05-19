@@ -19,7 +19,6 @@ class BookingsController < ApplicationController
     @booking.price = @pool.price
     @booking.pool = @pool
 
-
     if @booking.isValidForSaving? && @booking.save
       redirect_to user_bookings_path(current_user.id)
     else
