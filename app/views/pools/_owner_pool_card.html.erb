@@ -20,6 +20,7 @@
   </div>
   <% end %>
   <div class="edit-link">
-  <%= link_to "Edit my pool", user_my_pools_path(current_user) + "?pool_id=#{pool.id}", class: 'btn btn-danger'  %>
+  <%= link_to "Edit my pool", user_my_pools_path(current_user) + "?pool_id=#{pool.id}", class: 'btn btn-success'  %>
+  <%= link_to "Manage pool availability", pool_agendas_path(pool), class: 'btn btn-primary'  %>
   </div>
 </div>

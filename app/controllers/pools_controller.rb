@@ -22,6 +22,10 @@ class PoolsController < ApplicationController
     end
   end
 
+  def availaibility
+  #<--TODO-->
+  end
+
   def show
     @booking = Booking.new
     find_pool

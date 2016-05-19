@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
   devise_for :users
   root 'pages#home'
-  resources :pools, except: [:destroy]
+  resources :pools, except: [:destroy] do
+    get 'agendas' => 'pools#availibility'
+  end
   resources :users, except: [:index, :destroy] do
     get 'bookings' => 'users#bookings'
     get 'my-pools' => 'users#pools'
