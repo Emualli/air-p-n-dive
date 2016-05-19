@@ -3,7 +3,6 @@ class PoolsController < ApplicationController
   before_action :find_pool, only: [:show, :edit, :update]
 
   def index
-
     if !params.has_key?(:location) || params[:location].empty?
       @pools = Pool.all
     else
@@ -62,8 +61,19 @@ class PoolsController < ApplicationController
     end
   end
 
-  def initiate_pool(id)
-    @pool = Pool.find(id)
+  def searchjson
+    if !params.has_key?(:location) || params[:location].empty?
+      @pools = Pool.all
+    else
+      @location = params[:location].downcase
+      @pools = Pool.where("location <> ?", @location.capitalize)
+    end
+    if params.has_key?(:max_price) && !params[:max_price].empty?
+      max_price = params[:max_price].to_i
+      @pools = @pools.where("price > ?", max_price)
+    end
+    @ids = @pools.select("id")
+    render :searchjson, :layout => false
   end
 
   private
