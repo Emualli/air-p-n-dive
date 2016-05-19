@@ -1,0 +1,21 @@
+<div class="booking-owner-line text-center">
+  <div class="avatar-owner-line">
+    <% if booking.pool.user.avatar? %>
+      <%= cl_image_tag booking.pool.user.avatar.path, class: 'avatar-large' %>
+    <% end %>
+    <%= booking.user.first_name %>
+  </div>
+  <div class="pool-owner-line">
+    <strong><%= booking.pool.title %></strong>
+    <p><%= booking.pool.location %></p>
+  </div>
+  <div class="date-owner-line">
+    <strong><p><%= booking.date %></p></strong>
+    <p>From <%= booking.start_time %> to <%= booking.end_time %></p>
+  </div>
+  <div class="action-owner-line">
+    <%= button_to 'Accept this booking ?', booking_accept_path(booking), method: :post, class: "btn btn-primary" %>
+    <br><br>
+    <%= button_to 'Reject this booking ?', booking_reject_path(booking), method: :post, class: "btn btn-danger" %>
+  </div>
+</div>

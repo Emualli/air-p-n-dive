@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :edit, :update, :cancel, :pay]
+  before_action :set_booking, only: [:show, :edit, :update, :cancel, :pay, :accept, :reject]
 
   def new
     @booking = Booking.new
@@ -50,6 +50,20 @@ class BookingsController < ApplicationController
 
   def pay
     @booking.status = "paid"
+    @booking.save
+
+    redirect_to booking_path(@booking)
+  end
+
+  def accept
+    @booking.status = "accepted"
+    @booking.save
+
+    redirect_to booking_path(@booking)
+  end
+
+  def reject
+    @booking.status = "rejected"
     @booking.save
 
     redirect_to booking_path(@booking)

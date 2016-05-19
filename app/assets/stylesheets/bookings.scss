@@ -46,22 +46,18 @@
   background: white;
   color: black;
 }
-#grey_container {
+.grey_container {
   background: #CCCCCC;
   width: 100%;
 }
 .main-booking.active {
-  background-color: white;
   padding: 0 10px 0 10px;
   display: block;
 }
 .main-booking {
   display:none;
   padding: 0 10px 0 10px;
-}
-
-.content {
-  background-color: white;
+  background: #CCCCCC;
 }
 
 .label_form {
@@ -129,27 +125,30 @@
 .booking-owner-line {
   display: flex;
   align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: space-between;
+
+  p {
+    margin-bottom: 0;
+  }
+  background-color: #CCCCCC;
+  border-radius: 4px;
 }
 
-.avatar-owner-line {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 0 0 10%;
+.status-owner-line {
+  margin-left: 50px;
+  height: 28px;
 }
 
-.pool-owner-line {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 0 0 20%;
-
+.content-owner-line {
+  width: 50%;
 }
 
-.date-owner-line {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 0 0 20%;
-
+.action-owner-line {
+  margin-left: 50px;
 }

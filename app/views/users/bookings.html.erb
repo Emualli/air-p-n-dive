@@ -1,4 +1,4 @@
-<div class="container-full">
+<div class="container-full grey-container">
   <div class="tabs">
     <a class="tab active" id="customer" href="#">
       <h3>Your Dives</h3>
@@ -7,108 +7,82 @@
       <h3>Your pool requests</h3>
     </a>
   </div>
-  <div class="container-full" id="grey_container">
-    <div class="main-booking active" id='display_customer'>
-      <div class="booking-cards">
-        <div class="container">
-          <div class="row">
-            <% @customer_bookings.each do |booking| %>
-              <div class="col-xs-12 col-sm-6">
-                <div class="booking-card">
-                  <div class="booking-card-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= booking.pool.photos? ? cl_image_path(booking.pool.photos.first.path) : image_path('barcelona_pool.jpg') %>); background-size: cover; background-position: center;">
-                  </div>
-                  <br>
-                  <br>
-                  <div class="booking-card-category">
-                    <p><%= booking.pool.title %></p>
-                  </div>
-                  <div class="booking-card-description text-center">
-                    <strong><p><%= booking.pool.location %></p>
-                    <p><%= booking.date %> - starts at <%= booking.start_time %> - ends at <%= booking.end_time %></p></strong>
-                  </div>
-                  <div class="booking-card-msg text-center">
-                    <p><%= booking.get_status_msg %></p>
-                    <div class="booking-card-button">
-                      <% if booking.status == "accepted" %>
-                        <%= button_to 'Pay this booking ?', booking_pay_path(booking), method: :post, class: "btn btn-primary" %>
-                      <% end %>
-                    </div>
-                    <div class="booking-card-button">
-                      <% if booking.status == "created" || booking.status == "accepted" %>
-                        <%= button_to 'Cancel this booking ?', booking_cancel_path(booking), method: :post, class: "btn btn-danger" %>
-                      <% end %>
-                    </div>
 
+<!-- Owner bookings : NEW / CURRENT / PAST -->
+
+  <div class="main-booking grey-container active" id="display_customer">
+    <div class="booking-cards">
+      <div class="container">
+        <div class="row">
+          <% @customer_bookings.each do |booking| %>
+            <div class="col-xs-12 col-sm-6">
+              <div class="booking-card">
+                <div class="booking-card-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= booking.pool.photos? ? cl_image_path(booking.pool.photos.first.path) : image_path('barcelona_pool.jpg') %>); background-size: cover; background-position: center;">
+                </div>
+                <br>
+                <br>
+                <div class="booking-card-category">
+                  <p><%= booking.pool.title %></p>
+                </div>
+                <div class="booking-card-description text-center">
+                  <strong><p><%= booking.pool.location %></p>
+                  <p><%= booking.date %> - starts at <%= booking.start_time %> - ends at <%= booking.end_time %></p></strong>
+                </div>
+                <div class="booking-card-msg text-center">
+                  <p><%= booking.get_status_msg %></p>
+                  <div class="booking-card-button">
+                    <% if booking.status == "accepted" %>
+                      <%= button_to 'Pay this booking ?', booking_pay_path(booking), method: :post, class: "btn btn-primary" %>
+                    <% end %>
                   </div>
+                  <div class="booking-card-button">
+                    <% if booking.status == "created" || booking.status == "accepted" %>
+                      <%= button_to 'Cancel this booking ?', booking_cancel_path(booking), method: :post, class: "btn btn-danger" %>
+                    <% end %>
+                  </div>
+
                 </div>
               </div>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
-    <div class="main-booking" id='display_owner'>
-          <div class="new-bookings">
-            <h3 style="border-bottom: 1px solid #cacccd;">New</h3>
-            <div class="booking-avatar-owner">
-              <% @owner_bookings.each do |booking| %>
-                <% if booking.status == "created" then %>
-                  <div class="booking-owner-line">
-                    <div class="avatar-owner-line">
-                      <% if booking.pool.user.avatar? %>
-                        <%= cl_image_tag booking.pool.user.avatar.path, class: 'avatar-large' %>
-                      <% end %>
-                      <%= booking.user.first_name %>
-                    </div>
-                    <div class="pool-owner-line">
-                      <strong><%= booking.pool.title %></strong>
-                      <p><%= booking.pool.location %></p>
-                    </div>
-                    <div class="date-owner-line">
-                      <p><%= booking.date %></p>
-                      <p>From <%= booking.start_time %> to <%= booking.end_time %></p>
-                    </div>
-                    <div class="actions-owner-line">
-                      <p><%= booking.status %></p>
-                      <p><%= booking.get_status_msg %></p>
-                    </div>
-                    <div class="status-owner-line">
-                      <%= button_to 'Cancel this booking ?', booking_cancel_path(booking), method: :post, class: "btn btn-danger" %>
-                    </div>
-                  </div>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-          <div class="current-bookings">
-            <h3 style="border-bottom: 1px solid #cacccd;">Current</h3>
-            <div class="booking-avatar-owner">
-              <% @owner_bookings.each do |booking| %>
-                <% if (booking.status == "accepted" || booking.status == "paid") then %>
-                  <p><%= booking.status %></p>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-          <div class="past-bookings">
-            <h3 style="border-bottom: 1px solid #cacccd;">Past</h3>
-            <div class="booking-avatar-owner">
-              <% @owner_bookings.each do |booking| %>
-                <% if (booking.status != "accepted" && booking.status != "paid" && booking.status != "created") then %>
-                  <p><%= booking.status %></p>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-      Owner bookings :<br>
-      <% @owner_bookings.each do |booking| %>
-        Booking ID : <%= booking.id %><br>
-        Customer First name : <%= booking.user.first_name %><br>
-        Customer Last name : <%= booking.user.last_name %><br>
-        Owner First name : <%= booking.pool.user.first_name %><br>
-        Owner Last name : <%= booking.pool.user.last_name %><br><br>
-        Booking status : <%= booking.status %><br><br>
-      <% end %>
+  </div>
+
+<!-- Owner bookings : NEW / CURRENT / PAST -->
+
+  <div class="main-booking bg-grey" id="display_owner">
+    <div class="bg-white">
+      <div class="new-bookings">
+        <br><br><br>
+        <h3 style="border-bottom: 1px solid #cacccd;">New</h3>
+        <% @owner_bookings.each do |booking| %>
+          <% if booking.status == "created" then %>
+            <%= render 'users/bookings_owner_new', booking: booking %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="current-bookings">
+        <h3 style="border-bottom: 1px solid #cacccd;">Current</h3>
+        <div class="booking-avatar-owner">
+          <% @owner_bookings.each do |booking| %>
+            <% if (booking.status == "accepted" || booking.status == "paid") then %>
+              <%= render 'users/bookings_owner_current', booking: booking %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="past-bookings">
+        <h3 style="border-bottom: 1px solid #cacccd;">Past</h3>
+        <div class="booking-avatar-owner">
+          <% @owner_bookings.each do |booking| %>
+            <% if (booking.status != "accepted" && booking.status != "paid" && booking.status != "created") then %>
+              <p><%= booking.status %></p>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
