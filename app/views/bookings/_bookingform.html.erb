@@ -1,4 +1,6 @@
-<div class="col-xs-12" id="datepicker_error" style="display: none">Sorry, there are no available dates for this pool</div>
+<div class="col-xs-12" id="datepicker_error" style="display: none">Sorry, there are no available dates for this pool<br>
+<%= link_to 'Back to the list of pools', pools_path  %>
+</div>
 <%= simple_form_for @booking do |f| %>
 
 <%= f.input :date, label: 'Book your pool for :', label_html: { class: 'label_form' }, placeholder: "Date" %>
