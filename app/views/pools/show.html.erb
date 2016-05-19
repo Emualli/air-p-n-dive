@@ -104,6 +104,8 @@ $(document).ready(function(){
   $('#time_error').hide();
   $('.available').removeClass('selected');
   $('#hours-full-container').show();
+  $('#booking_start_time').toggle().val('');
+  $('#booking_end_time').toggle().val('');
 
   $('.timeslot').removeClass('unavailable').addClass('available');
     if (unavailable_slots[$(this).val()]) {
