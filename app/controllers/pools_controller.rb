@@ -29,6 +29,7 @@ class PoolsController < ApplicationController
   def show
     @booking = Booking.new
     find_pool
+    get_available_booking_dates
   end
 
   def edit
@@ -64,6 +65,16 @@ class PoolsController < ApplicationController
   end
 
   private
+
+  def get_available_booking_dates
+    init_agenda = Agenda.where('pool_id = ?', @pool.id) || []
+    @agendas = init_agenda.map { |a| [a.start_date, a.end_date] }.map do |couple|
+      date_range = (Date.parse(couple[0])..Date.parse(couple[1])).map(&:to_s)
+    end
+    @agendas = @agendas.flatten.map { |d| d.split('-').reverse.join('/') }
+    @all = (Date.parse('01/01/2016')..Date.parse('31/12/2016')).map(&:to_s).flatten.map { |d| d.split('-').reverse.join('/') }
+    @final = @all - @agendas
+  end
 
   def find_pool
     @pool = Pool.find(params[:id])

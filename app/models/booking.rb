@@ -20,7 +20,6 @@ class Booking < ActiveRecord::Base
     # 2nd check : Doesn't overlap any other booking
 
     # all_bookings_for_this_pool_at_this_date = Booking.where("pool_id = ? AND date = ?", pool.id, self.date)
-
   end
 
   def instancifyDate(date)

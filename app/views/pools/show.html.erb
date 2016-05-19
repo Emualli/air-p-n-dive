@@ -78,3 +78,31 @@
   </h3>
   <%= render 'bookings/booking_review' %>
 </div>
+
+<!-- This JS code transfers the logic behind every Datepicker / Timepicker from Ruby -->
+
+<% content_for(:after_js) do %>
+<%= javascript_tag do %>
+$(document).ready(function(){
+  var agendas = <%= raw @agendas %>
+  $('#booking_date').datepicker({
+    format: 'dd/mm/yyyy',
+    startDate: 'd',
+    datesDisabled: <%= raw @final %>
+  });
+
+  $('.tab').on('click', function() {
+    $('.tab').removeClass('active');
+    $(this).addClass('active');
+  });
+  $('#customer').on('click', function() {
+    $('#display_customer').addClass('active');
+    $('#display_owner').removeClass('active');
+  });
+  $('#owner').on('click', function() {
+    $('#display_customer').removeClass('active');
+    $('#display_owner').addClass('active');
+  });
+});
+<% end %>
+<% end %>
