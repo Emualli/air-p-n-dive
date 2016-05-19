@@ -87,8 +87,6 @@ $(document).ready(function(){
   var agendas = <%= raw @agendas %>;
   var unavailable_slots = <%= raw @unavailable_slots.to_json %>;
 
-  console.log(unavailable_slots);
-
   $('#booking_date').datepicker({
     autoclose: true,
     format: 'dd/mm/yyyy',
