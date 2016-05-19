@@ -17,8 +17,10 @@ class PoolsController < ApplicationController
     end
     # Let's DYNAMICALLY build the markers for the view.
     @markers = Gmaps4rails.build_markers(@pools) do |pool, marker|
+      @pool = pool
       marker.lat pool.latitude
       marker.lng pool.longitude
+      marker.infowindow render_to_string(partial: "pool_infowindow", :locals => { :object => pool}).gsub(/\n/, '')
     end
   end
 
