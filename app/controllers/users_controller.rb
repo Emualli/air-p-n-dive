@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   def bookings
     # Get Customer bookings for the user :
-    @customer_bookings = Booking.where("user_id = #{current_user.id}")
+    @customer_bookings = Booking.where("user_id = #{current_user.id}").sort_by(&:date).reverse
 
     # Get Owner reservations for the user :
     @owned_pools = Pool.where("user_id = #{current_user.id}")
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     @owned_pools.each do |pool|
       @owner_bookings << Booking.where("pool_id = #{pool.id}") unless Booking.where("pool_id = #{pool.id}").nil?
     end
-    @owner_bookings.flatten!
+    @owner_bookings.sort_by(&:date).reverse.flatten!
   end
 
   def pools
