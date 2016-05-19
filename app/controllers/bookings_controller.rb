@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :edit, :update, :cancel, :pay, :accept, :reject]
+  before_action :set_booking, only: [:show, :edit, :update, :cancel, :pay, :accept, :reject, :review]
 
   def new
     @booking = Booking.new
@@ -35,38 +35,36 @@ class BookingsController < ApplicationController
 
   def update
     set_booking
-    @booking.user = current_user
-    @booking.pool = @pool
     @booking.update(booking_params)
-    redirect_to booking_path(@booking)
+    redirect_to user_bookings_path(current_user)
   end
 
   def cancel
     @booking.status = "cancelled"
     @booking.save
 
-    redirect_to booking_path(@booking)
+    redirect_to user_bookings_path(current_user)
   end
 
   def pay
     @booking.status = "paid"
     @booking.save
 
-    redirect_to booking_path(@booking)
+    redirect_to user_bookings_path(current_user)
   end
 
   def accept
     @booking.status = "accepted"
     @booking.save
 
-    redirect_to booking_path(@booking)
+    redirect_to user_bookings_path(current_user)
   end
 
   def reject
     @booking.status = "rejected"
     @booking.save
 
-    redirect_to booking_path(@booking)
+    redirect_to user_bookings_path(current_user)
   end
 
   private
@@ -80,6 +78,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:pool_id, :date, :start_time, :end_time)
+    params.require(:booking).permit(:date, :start_time, :end_time, :customer_rating, :customer_comment)
   end
 end
