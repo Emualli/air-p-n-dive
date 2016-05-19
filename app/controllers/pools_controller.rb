@@ -31,6 +31,7 @@ class PoolsController < ApplicationController
     @booking = Booking.new
     find_pool
     get_available_booking_dates
+    get_all_available_hours
   end
 
   def edit
@@ -86,6 +87,14 @@ class PoolsController < ApplicationController
     @agendas = @agendas.flatten.map { |d| d.split('-').reverse.join('/') }
     @all = (Date.parse('01/01/2016')..Date.parse('31/12/2016')).map(&:to_s).flatten.map { |d| d.split('-').reverse.join('/') }
     @final = @all - @agendas
+  end
+
+  def get_all_available_hours
+    @unavailable_slots = {}
+    @agendas.each do |day|
+      slots = Booking.where('pool_id = ? AND DATE = ?', @pool.id, day).map { |s| [s.start_time, s.end_time] }
+      @unavailable_slots[day] = slots unless slots.empty?
+    end
   end
 
   def find_pool
