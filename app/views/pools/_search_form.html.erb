@@ -1,0 +1,14 @@
+<form action="/pools/search/json" method="POST" class="form-inline">
+  <div class="form-group">
+    <input type="text" class="form-control" id="location" name="search_parameters[location]" placeholder="Filter by location here">
+  </div>
+  <div class="form-group">
+    <div class="input-group">
+      <input type="number" class="form-control" name="search_parameters[max_price]" id="max-price" placeholder="Put max price">
+      <div class="input-group-addon">€</div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-success" id="search-submit">Filter</button>
+  <button type="submit" class="btn btn-primary" id="reset-filter">Reset filter</button>
+</form>
+
