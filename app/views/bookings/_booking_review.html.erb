@@ -1,22 +1,23 @@
-<% @pool.bookings.each do |booking| %>
-  <div class="row">
+<div class="row">
+  <% @pool.bookings.each do |booking| %>
+    <% unless booking.booking_rating.nil? %>
     <div class="col-xs-12 col-sm-8">
-      <div class="review">
+      <div class="pool-review">
         <div class="profile-picture text-center">
           <%= image_tag('avatar.jpg', class: 'avatar-large') %>
           <p><%= booking.user.first_name %></p>
         </div>
-        <div class="review-content">
-          <p><%= booking.date %>&nbsp;&nbsp;&nbsp;<%  unless booking.booking_rating.nil? then booking.booking_rating.times do %>
+        <div class="pool-review-content">
+          <p><%= booking.date %>&nbsp;&nbsp;&nbsp;
               <i class="fa fa-star" style="color: #EEBD2D" aria-hidden="true"></i>
-            <% end %>
             <% (5 - booking.booking_rating).times do %>
               <i class="fa fa-star-o" aria-hidden="true"></i>
-            <% end %><% end %>
+            <% end %>
           </p>
           <p><%= booking.booking_comment %></p>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
+    <% end %>
+  <% end %>
+</div>
