@@ -40,14 +40,19 @@
           url: my_url,
           success: function(data) {
             var hash_pool = JSON.parse(data);
-            hash_pool.forEach(function(e){
-              console.log(this);
-            })
+            $.each(hash_pool, function(index, value) {
+              $('#' + value['id']).hide();
+            });
           },
           error: function(jqXHR) {
             console.error(jqXHR.responseText);
           }
         });
+      });
+
+      $('#reset-filter').on('click', function(e){
+        e.preventDefault();
+        $('.pool-card').show();
       });
 
       $('.avatar-bordered').on('click', function (e){

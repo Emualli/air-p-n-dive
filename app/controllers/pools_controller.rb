@@ -66,11 +66,11 @@ class PoolsController < ApplicationController
       @pools = Pool.all
     else
       @location = params[:location].downcase
-      @pools = search_pools_by_location
+      @pools = Pool.where("location <> ?", @location.capitalize)
     end
     if params.has_key?(:max_price) && !params[:max_price].empty?
       max_price = params[:max_price].to_i
-      @pools = @pools.where("price <= ?", max_price)
+      @pools = @pools.where("price > ?", max_price)
     end
     @ids = @pools.select("id")
     render :searchjson, :layout => false
