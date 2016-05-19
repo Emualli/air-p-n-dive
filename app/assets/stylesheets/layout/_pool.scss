@@ -85,3 +85,9 @@
   padding: 5px 0px;
   list-style: none;
 }
+
+/* Override datepicker CSS */
+
+.disabled.day {
+  color: #FD7D7A !important;
+}
