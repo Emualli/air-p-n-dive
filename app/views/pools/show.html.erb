@@ -87,6 +87,8 @@ $(document).ready(function(){
   var agendas = <%= raw @agendas %>;
   var unavailable_slots = <%= raw @unavailable_slots.to_json %>;
 
+  console.log(unavailable_slots);
+
   $('#booking_date').datepicker({
     autoclose: true,
     format: 'dd/mm/yyyy',
@@ -97,7 +99,10 @@ $(document).ready(function(){
 
   $('#booking_date').on('change', function() {
   $('#customer_error').hide();
+  $('#date_error').hide ();
+  $('#time_error').hide();
   $('#hours-full-container').show();
+
   $('.timeslot').removeClass('unavailable').addClass('available');
     if (unavailable_slots[$(this).val()]) {
       unavailable_slots[$(this).val()].forEach(function(a){
@@ -105,23 +110,27 @@ $(document).ready(function(){
         $('#' + e.slice(0,2)).removeClass('available').addClass('unavailable');
       });
     });
+    }
+
     $('.available').on('click', function() {
       $('.available').removeClass('selected');
-      start_time = this.id + ':00';
-      end_time = String(parseInt(this.id) + 2) + ':00';
+      start_time = String(parseInt(this.id)).length === 2 ? String(parseInt(this.id)) + ':00' : '0' + String(parseInt(this.id)) + ':00';
+      end_time = (String(parseInt(this.id) + 2)).length === 2 ? String(parseInt(this.id) + 2) + ':00' : '0' + String(parseInt(this.id) + 2) + ':00';
       $(this).toggleClass('selected');
       $('#booking_start_time').toggle().val(start_time);
       $('#booking_end_time').toggle().val(end_time);
     });
-    }
 
     if ($('.unavailable').length === 6) {
       $('#customer_error').show();
     }
   });
 
-$("#new_booking").on('click', function(e) {
-  $('#date_error').hide();
+$("#submit_bookings").on('click', function(e) {
+  $('#date_error').hide ();
+  $('#time_error').hide();
+  $('#customer_error').hide();
+  e.preventDefault();
 
   if ($('#booking_date').val() === "") {
     $('#date_error').show();
@@ -129,9 +138,11 @@ $("#new_booking").on('click', function(e) {
   }
   else if($('#booking_date').val() !== "" && $('#booking_start_time').val() === "") {
     $('#time_error').show();
+    console.log('2');
   }
   else if($('#booking_date').val() !== "" && $('#booking_start_time').val() !== "") {
-   $(this).submit();
+   $('#new_booking').submit();
+   console.log('3');
   }
 });
 
