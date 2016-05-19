@@ -92,7 +92,7 @@ class PoolsController < ApplicationController
   def get_all_available_hours
     @unavailable_slots = {}
     @agendas.each do |day|
-      slots = Booking.where('pool_id = ? AND DATE = ?', @pool.id, day).map { |s| [s.start_time, s.end_time] }
+      slots = Booking.where('pool_id = ? AND DATE = ? AND status <> ?', @pool.id, day, 'cancelled').map { |s| [s.start_time, s.end_time] }
       @unavailable_slots[day] = slots unless slots.empty?
     end
   end
