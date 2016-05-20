@@ -1,0 +1,31 @@
+<div class="wrapper-content">
+  <div class="container-content">
+    <div class="avatar-profile">
+      <% if @user.avatar? %>
+        <%= cl_image_tag @user.avatar.path, class: "avatar-big"%>
+      <% end %>
+      <p><strong><%= @user.first_name %> <%= @user.last_name %></strong></p>
+    </div>
+    <div class="content-profile">
+        <p>Bio : <%= @user.bio %></p>
+    </div>
+    <div class="picture-pools">
+      <% @user.pools.each do |pool| %>
+        <div class="col-xs-4 nopadding">
+          <%= link_to pool_path(pool) do %>
+            <% if pool.photos? %>
+              <%= cl_image_tag pool.photos.first.path, class: "small-image" %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="user-comments">
+    <% @user.pools.each do |pool| %>
+      <% pool.bookings.each do |booking| %>
+          <p><%= booking.booking_comment  %></p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
