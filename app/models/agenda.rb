@@ -1,5 +1,6 @@
 class Agenda < ActiveRecord::Base
   belongs_to :pool
+  validates :start_date, presence: true
 
   def start_time
     instancifyDate(self.start_date)
