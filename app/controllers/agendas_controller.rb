@@ -8,6 +8,6 @@ class AgendasController < ApplicationController
 
   private
   def agenda_params
-    params.require(:agenda).permit(:start_date, :pool_id)
+    params.require(:agenda).permit(:start_date, :end_date, :pool_id)
   end
 end

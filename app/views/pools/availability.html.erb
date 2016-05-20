@@ -4,6 +4,7 @@
       <%= simple_form_for [@pool, @agenda] do |f| %>
       <div class="col-xs-10">
       <%= f.input :start_date, label: 'Set your pool available for :', label_html: { class: 'label_form' }, placeholder: "Date" %></div><div class="col-xs-2" style='margin-top: 25px;'>
+      <%= f.hidden_field :end_date, value: params[:start_date], id: :end_date_field %>
       <%= f.hidden_field :pool_id, value: params[:pool_id] || @pool.id %>
       <%= f.button :submit, "Mark as available", class: "btn btn-success" %></div>
       <% end %>
@@ -40,10 +41,11 @@
       });
 
     $('#new_agenda').submit(function() {
-      if(('#agenda_start_date').val() !== '') {
+      if($('#agenda_start_date').val() !== '') {
         filled_day = $('#agenda_start_date').val().split('/').reverse().join('-');
         $(".day:contains('" + filled_day + "')").addClass('has-events');
         $(".day:contains('" + filled_day + "')").append('Available day');
+        $("#end_date_field").val($('#agenda_start_date').val());
       }
     });
   });
