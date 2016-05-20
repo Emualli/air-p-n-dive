@@ -1,6 +1,13 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    p @user
+    p current_user
+    if @user == current_user
+      render :show
+    else
+      render :open_profile
+    end
   end
 
   def update

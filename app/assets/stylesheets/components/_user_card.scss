@@ -1,0 +1,39 @@
+.small-image {
+  height: 100px;
+  width: 100%;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.wrapper-content {
+  background-color: #EFEFEF;
+}
+
+.container-content {
+  display: flex;
+  padding: 30px 0px;
+  align-items: center;
+}
+
+.avatar-profile{
+  flex: 0 1 20%;
+  align-content: center;
+  text-align: center;
+}
+
+.content-profile {
+  flex: 1 1 auto;
+  align-content: center;
+  padding: 20px;
+}
+
+.picture-pools {
+  flex: 0 1 40%;
+}
+
+.user-comments {
+  flex: 0 1 60%;
+  align-content: center;
+  padding-top: 30px;
+}
