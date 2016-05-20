@@ -3,7 +3,7 @@
 /* Footer design */
 .footer {
   background-color: #333333;
-  height: 100px;
+  height: 70px;
   display: flex;
   align-items: center;
   font-size: 12px;
@@ -14,13 +14,17 @@
     color: #CCCCCC;
     margin: 0 auto;
   }
-}
 
-.footer a {
-  color: #CCCCCC;
-  font-size: 20px;
-  letter-spacing: 7px;
-  transition: 0.5s;
+  a {
+    color: #CCCCCC;
+    font-size: 20px;
+    letter-spacing: 7px;
+    transition: 0.5s;
+  }
+
+  ul {
+    margin-bottom: 0px;
+  }
 }
 
 #fbhover:hover {
@@ -40,5 +44,5 @@
 }
 
 #footer-text {
-  margin-top: 18px;
+  margin-top: 8px;
 }
