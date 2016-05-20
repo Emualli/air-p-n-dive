@@ -68,7 +68,7 @@
 <!-- Customer reviews -->
 
 <div class="container">
-  <h3><%= @pool.nb_booking_comment %> commentaire(s)&nbsp;&nbsp;&nbsp;<% unless @pool.average_rating.nil? then @pool.average_rating.round.times do %>
+  <h3><%= pluralize @pool.nb_booking_comment, 'commentaire' %>&nbsp;&nbsp;&nbsp;<% unless @pool.average_rating.nil? then @pool.average_rating.round.times do %>
             <i class="fa fa-star" style="color: #EEBD2D" aria-hidden="true"></i>
           <% end %>
           <% (5 - @pool.average_rating.round).times do %>
