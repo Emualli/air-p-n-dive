@@ -66,13 +66,27 @@ class PoolsController < ApplicationController
   def searchjson
     if !params.has_key?(:location) || params[:location].empty?
       @pools = Pool.all
+      if params.has_key?(:max_price) && !params[:max_price].empty?
+        max_price = params[:max_price].to_i
+        @pools = @pools.where("price > ?", max_price)
+      end
     else
       @location = params[:location].downcase
-      @pools = Pool.where("location <> ?", @location.capitalize)
+      range = 50 if params[:range].empty?
+      range = params[:range].to_i
+      @pools = Pool.where('id NOT IN (?)', Pool.near(@location, range).map{ |e| e.id } )
+      if params.has_key?(:max_price) && !params[:max_price].empty?
+        max_price = params[:max_price].to_i
+        p max_price
+        @pools = Pool.where('price > ? OR id NOT IN (?)', max_price, Pool.near(@location, range).map{ |e| e.id } )
+      end
     end
-    if params.has_key?(:max_price) && !params[:max_price].empty?
-      max_price = params[:max_price].to_i
-      @pools = @pools.where("price > ?", max_price)
+    @markers = Gmaps4rails.build_markers(@pools) do |pool, marker|
+      @pool = pool
+      marker.lat pool.latitude
+      marker.lng pool.longitude
+      marker.infowindow render_to_string(partial: "pool_infowindow", :locals => { :object => pool}).gsub(/\n/, '')
+      marker.picture url: ActionController::Base.helpers.asset_path("goutte-deau-icon.png"), width: 38, height: 50#, shadow_width: "20", shadow_height: "50", shadow_anchor: [5, 10]
     end
     @ids = @pools.select("id")
     render :searchjson, :layout => false
@@ -107,7 +121,7 @@ class PoolsController < ApplicationController
   end
 
   def search_pools_by_location
-    return Pool.where("location = ?", @location.capitalize)
+    return Pool.near(@location, 50)
   end
 
   def fetch_pools_by_availability
