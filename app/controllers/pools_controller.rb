@@ -80,6 +80,13 @@ class PoolsController < ApplicationController
         @pools = Pool.where('price > ? OR id NOT IN (?)', max_price, Pool.near(@location, range).map{ |e| e.id } )
       end
     end
+    @markers = Gmaps4rails.build_markers(@pools) do |pool, marker|
+      @pool = pool
+      marker.lat pool.latitude
+      marker.lng pool.longitude
+      marker.infowindow render_to_string(partial: "pool_infowindow", :locals => { :object => pool}).gsub(/\n/, '')
+      marker.picture url: ActionController::Base.helpers.asset_path("goutte-deau-icon.png"), width: 38, height: 50#, shadow_width: "20", shadow_height: "50", shadow_anchor: [5, 10]
+    end
     @ids = @pools.select("id")
     render :searchjson, :layout => false
   end
