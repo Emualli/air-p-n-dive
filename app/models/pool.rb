@@ -9,7 +9,7 @@ class Pool < ActiveRecord::Base
   after_validation :geocode, if: :address_changed?
 
   def average_rating
-    bookings.map(&:booking_rating).reject(&:nil?).reduce(:+).fdiv(bookings.size) unless bookings.map(&:booking_rating).reject(&:nil?).empty?
+    bookings.map(&:booking_rating).reject(&:nil?).reduce(:+).fdiv(bookings.map(&:booking_rating).reject(&:nil?).size) unless bookings.map(&:booking_rating).reject(&:nil?).empty?
   end
 
   def nb_booking_comment
