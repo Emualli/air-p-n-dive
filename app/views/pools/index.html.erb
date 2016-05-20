@@ -36,26 +36,30 @@
 
       $('#search-submit').on('click', function(e){
         e.preventDefault();
-        var my_url = window.location['origin'] + '/searchjson?' + 'location=' + $('#location').val() + '&'+ 'max_price=' + $('#max-price').val() ;
-        console.log(my_url);
-        $.ajax({
-          type: "GET",
-          url: my_url,
-          success: function(data) {
-            var hash_pool = JSON.parse(data);
-            $.each(hash_pool, function(index, value) {
-              $('#' + value['id']).hide();
-            });
-          },
-          error: function(jqXHR) {
-            console.error(jqXHR.responseText);
-          }
-        });
+        var my_url = window.location['origin'] + '/searchjson?' + 'location=' + '<%= @location %>' + '&max_price=' + $('#max-price').val() + '&range=' + $('#range').val();
+        if ($('#max-price').val() != '' || $('#range').val() != '') {
+          $.ajax({
+            type: "GET",
+            url: my_url,
+            success: function(data) {
+              var hash_pool = JSON.parse(data);
+              $('.pool-card').show();
+              $.each(hash_pool, function(index, value) {
+                $('#' + value['id']).hide();
+              });
+            },
+            error: function(jqXHR) {
+              console.error(jqXHR.responseText);
+            }
+          });
+        }
       });
 
       $('#reset-filter').on('click', function(e){
         e.preventDefault();
         $('.pool-card').show();
+        $('#max-price').val('');
+        $('#range').val('');
       });
 
       $('.avatar-bordered').on('click', function (e){
