@@ -32,15 +32,12 @@
 
   <%= javascript_tag do %>
   $(document).ready(function(){
-    datepicker_date = <%= raw @datepicker_date %>;
 
     $('#agenda_start_date').datepicker({
       autoclose: true,
       format: 'dd/mm/yyyy',
       startDate: 'd'
       });
-
-    console.log(datepicker_date);
 
     $('#new_agenda').submit(function() {
       filled_day = $('#agenda_start_date').val().split('/').reverse().join('-');
