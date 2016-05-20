@@ -16,7 +16,7 @@
     <% elsif booking.status == "cancelled" %>
       <em><p>Your request has been cancelled !</p></em>
     <% elsif booking.status == "closed" && booking.booking_comment.nil? %>
-      <em><p>Please, add a review on your customer</p></em>
+      <em><p>Please, add a review on your host</p></em>
     <% else %>
       <em><p>Thank you for your review !</p></em>
     <% end %>
