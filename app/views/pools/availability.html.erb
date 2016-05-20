@@ -32,7 +32,6 @@
 
   <%= javascript_tag do %>
   $(document).ready(function(){
-    datepicker_date = <%= raw @datepicker_date %>;
 
     $('#agenda_start_date').datepicker({
       autoclose: true,
@@ -40,12 +39,12 @@
       startDate: 'd'
       });
 
-    console.log(datepicker_date);
-
     $('#new_agenda').submit(function() {
-      filled_day = $('#agenda_start_date').val().split('/').reverse().join('-');
-      $(".day:contains('" + filled_day + "')").addClass('has-events');
-      $(".day:contains('" + filled_day + "')").append('Available day');
+      if('#agenda_start_date').val() !== '') {
+        filled_day = $('#agenda_start_date').val().split('/').reverse().join('-');
+        $(".day:contains('" + filled_day + "')").addClass('has-events');
+        $(".day:contains('" + filled_day + "')").append('Available day');
+      }
     });
   });
     <% end %>
