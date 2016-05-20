@@ -9,7 +9,9 @@
         </div>
         <div class="pool-review-content">
           <p><%= booking.date %>&nbsp;&nbsp;&nbsp;
+            <% booking.booking_rating.times do %>
               <i class="fa fa-star" style="color: #EEBD2D" aria-hidden="true"></i>
+            <% end %>
             <% (5 - booking.booking_rating).times do %>
               <i class="fa fa-star-o" aria-hidden="true"></i>
             <% end %>
