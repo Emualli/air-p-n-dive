@@ -15,8 +15,8 @@
     <em><p>Currently waiting for you !</p></em>
   </div>
   <div class="action-owner-line">
-    <%= button_to 'Accept this booking ?', booking_accept_path(booking), method: :post, class: "btn btn-primary width-btn" %>
+    <%= button_to 'Accept', booking_accept_path(booking), method: :post, class: "btn btn-primary width-btn" %>
     <br>
-    <%= button_to 'Reject this booking ?', booking_reject_path(booking), method: :post, class: "btn btn-danger width-btn" %>
+    <%= button_to 'Reject', booking_reject_path(booking), method: :post, class: "btn btn-danger width-btn" %>
   </div>
 </div>

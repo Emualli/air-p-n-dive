@@ -23,7 +23,7 @@
   </div>
   <div class="action-owner-line">
     <% if booking.status == "closed" && booking.booking_comment.nil? %>
-      <button type="button" id="create_pool" class="btn btn-primary" style="width: 182px; margin-bottom: 10px;" data-toggle="modal" data-target="#reviewModalCustomer<%= booking.id %>">Add a review ?</button>
+      <button type="button" id="create_pool" class="btn btn-primary" style="width: 100px; margin-bottom: 10px;" data-toggle="modal" data-target="#reviewModalCustomer<%= booking.id %>">Review</button>
     <% end %>
     <br>
   </div>

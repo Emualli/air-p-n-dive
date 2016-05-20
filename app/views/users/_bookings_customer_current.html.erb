@@ -19,9 +19,9 @@
   </div>
   <div class="action-owner-line">
     <% if booking.status == "paid" %>
-    <%= button_to 'Cancel this booking ?', booking_cancel_path(booking), method: :post, class: "btn btn-danger width-btn" %>
+    <%= button_to 'Cancel', booking_cancel_path(booking), method: :post, class: "btn btn-danger width-btn" %>
     <% else %>
-    <%= button_to 'Pay this booking ?', booking_pay_path(booking), method: :post, class: "btn btn-primary width-btn" %>
+    <%= button_to 'Pay', booking_pay_path(booking), method: :post, class: "btn btn-primary width-btn" %>
     <% end %>
   </div>
 </div>
