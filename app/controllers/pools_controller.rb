@@ -24,7 +24,7 @@ class PoolsController < ApplicationController
     end
   end
 
-  def availaibility
+  def availability
   #<--TODO-->
   end
 
