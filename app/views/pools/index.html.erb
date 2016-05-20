@@ -29,6 +29,9 @@
         markers = handler.addMarkers(<%= raw @markers.to_json %>);
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
+        if (markers.length <= 1) {
+          handler.getMap().setZoom(11);
+        }
       });
 
       $('#search-submit').on('click', function(e){
