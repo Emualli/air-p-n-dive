@@ -24,8 +24,12 @@ class PoolsController < ApplicationController
     end
   end
 
-  def availaibility
-  #<--TODO-->
+  def availability
+    @pool = Pool.find(params[:pool_id])
+    @datepicker_date = params[:start_date].to_s
+    @agenda = Agenda.new
+    @agendas = Agenda.where('pool_id = ?', @pool.id)
+    @agendas = @agendas.reject{ |a| date_string_to_date(a.start_date) < Date.today }
   end
 
   def show

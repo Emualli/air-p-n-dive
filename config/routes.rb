@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
   root 'pages#home'
   resources :pools, except: [:destroy] do
-    get 'agendas' => 'pools#availibility'
+    get 'agendas' => 'pools#availability'
+    resources :agendas, only: :create
   end
   get 'searchjson' => 'pools#searchjson'
   resources :users, except: [:index, :destroy] do
