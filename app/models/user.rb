@@ -11,13 +11,18 @@ class User < ActiveRecord::Base
   #
   #
 
-  # def count_pending_actions
-  #   # je veux aller chercher les created dans le cas ou qqun a fait une résa sur ma pool
-  #   # je veux aller chercher les accepted dans le cas ou j'ai fait une résa
+  def count_pending_actions
+    # count actions pour navbar
+    # les created dans le cas ou qqun a fait une résa sur ma pool
+    # les accepted dans le cas ou j'ai fait une résa
 
-  #   @bookings = Booking.all
+    count = 0
+    count += Booking.all.where('user_id = ? AND status = "accepted"', self.id).size unless @bookings.nil?
 
-  #   @count = @bookings.pool.where('user_id = #{current_user?id} AND status = "created"').size unless @bookings.pool.nil?
-  #   @count += @bookings.where('user_id = #{current_user?id} AND status = "accepted"').size unless @bookings.nil?
-  # end
+    Booking.all.each do |booking|
+      count += 1 if booking.pool.user_id == self.id && booking.status == "created"
+    end
+
+  return count
+  end
 end

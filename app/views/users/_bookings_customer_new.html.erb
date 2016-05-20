@@ -1,10 +1,10 @@
 <div class="booking-owner-line">
-  <div>
+  <div class="avatar-owner-line">
     <% if booking.user.avatar? %>
       <%= cl_image_tag booking.user.avatar.path, class: 'avatar-large' %>
     <% end %>
   </div>
-  <div class="content-owner-line text-left">
+  <div class="content-owner-line">
     <p>
       You booked <strong><%= booking.pool.title %></strong> (<%= booking.pool.location %>)
       on <%= booking.date %></strong> - from <%= booking.start_time %> to <%= booking.end_time %>
@@ -14,6 +14,6 @@
     <em><p>Awaiting owner to accept your request !</p></em>
   </div>
   <div class="action-owner-line">
-    <%= button_to 'Cancel this booking ?', booking_cancel_path(booking), method: :post, class: "btn btn-danger" %>
+    <%= button_to 'Cancel this booking ?', booking_cancel_path(booking), method: :post, class: "btn btn-danger width-btn" %>
   </div>
 </div>

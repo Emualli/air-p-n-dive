@@ -11,10 +11,9 @@
 <!-- Customer bookings : NEW / CURRENT / PAST -->
 
   <div class="main-booking bg-grey active" id="display_customer">
-    <div class="bg-white">
+    <div class="bg-white container-bookings">
       <div class="new-bookings">
-        <br>
-        <h3 style="border-bottom: 1px solid #cacccd;">New</h3>
+        <strong><h3 style="border-bottom: 1px solid #cacccd;">Your new dives</h3></strong>
         <% @customer_bookings.each do |booking| %>
           <% if booking.status == "created" then %>
             <%= render 'users/bookings_customer_new', booking: booking %>
@@ -22,7 +21,7 @@
         <% end %>
       </div>
       <div class="current-bookings">
-        <h3 style="border-bottom: 1px solid #cacccd;">Current</h3>
+        <strong><h3 style="border-bottom: 1px solid #cacccd;">Your current dives</h3></strong>
         <div class="booking-avatar-owner">
           <% @customer_bookings.each do |booking| %>
             <% if (booking.status == "accepted" || booking.status == "paid") then %>
@@ -32,7 +31,7 @@
         </div>
       </div>
       <div class="past-bookings">
-        <h3 style="border-bottom: 1px solid #cacccd;">Past</h3>
+        <strong><h3 style="border-bottom: 1px solid #cacccd;">Your past dives</h3></strong>
         <div class="booking-avatar-owner">
           <% @customer_bookings.each do |booking| %>
             <% if (booking.status != "accepted" && booking.status != "paid" && booking.status != "created") then %>
@@ -47,10 +46,9 @@
 <!-- Owner bookings : NEW / CURRENT / PAST -->
 
   <div class="main-booking bg-grey" id="display_owner">
-    <div class="bg-white">
+    <div class="bg-white container-bookings">
       <div class="new-bookings">
-        <br>
-        <h3 style="border-bottom: 1px solid #cacccd;">New</h3>
+        <strong><h3 style="border-bottom: 1px solid #cacccd;">New pool requests</h3></strong>
         <% @owner_bookings.each do |booking| %>
           <% if booking.status == "created" then %>
             <%= render 'users/bookings_owner_new', booking: booking %>
@@ -58,7 +56,7 @@
         <% end %>
       </div>
       <div class="current-bookings">
-        <h3 style="border-bottom: 1px solid #cacccd;">Current</h3>
+        <strong><h3 style="border-bottom: 1px solid #cacccd;">Current pool requests</h3></strong>
         <div class="booking-avatar-owner">
           <% @owner_bookings.each do |booking| %>
             <% if (booking.status == "accepted" || booking.status == "paid") then %>
@@ -68,7 +66,7 @@
         </div>
       </div>
       <div class="past-bookings">
-        <h3 style="border-bottom: 1px solid #cacccd;">Past</h3>
+        <strong><h3 style="border-bottom: 1px solid #cacccd;">Closed pool requests</h3></strong>
         <div class="booking-avatar-owner">
           <% @owner_bookings.each do |booking| %>
             <% if (booking.status != "accepted" && booking.status != "paid" && booking.status != "created") then %>

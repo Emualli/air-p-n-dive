@@ -2,36 +2,35 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.label_form {
-  font-size: 15px;
-  color: rgb(30, 30, 30);
-}
-
 .tabs {
   background: #CCCCCC;
   display: flex;
-  padding: 10px 10px 0 10px;
+  padding: 10px 100px 0 100px;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  a:hover {
+    cursor: pointer;
+    text-decoration: none;
+    opacity: 0.8;
+  }
+
+  h3 {
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 0;
+  }
+
+  p {
+    opacity: 0.5;
+    margin-bottom: 0;
+  }
 }
 
-.tabs a {
-  color: white;
-}
-.tabs a:hover {
-  cursor: pointer;
-  text-decoration: none;
-  opacity: 0.8;
-}
-.tabs h3 {
-  font-size: 17px;
-  font-weight: bold;
-  margin-top: 0;
-}
-.tabs p {
-  opacity: 0.5;
-  margin-bottom: 0;
-}
 .tab {
-  background: #808080;
+  background: #AAAAAA;
   flex: 0 0 50%;
   text-align: center;
   padding: 20px 0;
@@ -46,81 +45,31 @@
   background: white;
   color: black;
 }
-.grey_container {
-  background: #CCCCCC;
-  width: 100%;
-}
-.main-booking.active {
-  padding: 0 10px 0 10px;
-  display: block;
-}
-.main-booking {
-  display:none;
-  padding: 0 10px 0 10px;
-  background: #CCCCCC;
-}
 
 .label_form {
   font-size: 12px;
   color: rgb(30, 30, 30);
 }
 
-.booking-card-photo {
-  height: 175px;
-  border-radius: 4px 4px 0px 0px;
-}
-
-.avatar-owner {
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  top: 150px;
-}
-
-.booking-card {
-  height: 500px;
-  background-size: cover !important;
-  position: relative;
-  margin: 20px;
-  background-color: rgb(230, 230, 230);
-  border-radius: 4px;
-}
-
-.booking-card-category {
-  position: absolute;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-  color: white;
-  top: 10px;
-  left: 10px;
-  font-size: 15px;
-  text-transform: uppercase;
-}
-
-.booking-card-description {
-  position: absolute;
-  top: 220px;
-  position: absolute;
-  color: rgb(30, 30, 30);
+.grey_container {
+  background: #CCCCCC;
   width: 100%;
 }
-
-.booking-card-msg {
-  position: absolute;
-  top: 300px;
-  position: absolute;
-  color: rgb(30, 30, 30);
-  width: 100%;
+.main-booking.active {
+  padding: 0 100px 0 100px;
+  display: block;
 }
-
-.booking-card-button {
-  border-top: 1px solid #cacccd;
-  height: 60px;
-  padding-top: 11px;
+.main-booking {
+  display:none;
+  padding: 0 100px 0 100px;
+  background: #CCCCCC;
 }
 
 // owner
+
+.container-bookings {
+  padding: 50px;
+}
 
 .booking-owner-line {
   display: flex;
@@ -136,22 +85,30 @@
   p {
     margin: 0;
   }
-  background-color: #CCCCCC;
+  background-color: rgb(240, 240, 240);
   border-radius: 4px;
   align-items: center;
 }
 
 .status-owner-line {
   margin-left: 50px;
+  width: 30%;
 }
 
 .content-owner-line {
   margin-left: 20px;
+  justify-content: left;
   width: 50%;
 }
 
 .action-owner-line {
   margin-left: 50px;
+  justify-content: right;
+  width: 15%;
+}
+
+.avatar-owner-line {
+  width: 5%;
 }
 
 #hourly-title {
@@ -239,4 +196,8 @@
   font-weight: 800;
   color: #890000;
   text-align:center;
+}
+
+.width-btn {
+  width: 182px;
 }

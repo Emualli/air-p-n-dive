@@ -1,10 +1,10 @@
 <div class="booking-owner-line">
-  <div>
+  <div class="avatar-owner-line">
     <% if booking.user.avatar? %>
       <%= cl_image_tag booking.user.avatar.path, class: 'avatar-large' %>
     <% end %>
   </div>
-  <div class="content-owner-line text-left">
+  <div class="content-owner-line">
     <p>
       You booked <strong><%= booking.pool.title %></strong> (<%= booking.pool.location %>)
       on <%= booking.date %></strong> - from <%= booking.start_time %> to <%= booking.end_time %>
@@ -23,7 +23,7 @@
   </div>
   <div class="action-owner-line">
     <% if booking.status == "closed" && booking.booking_comment.nil? %>
-      <button type="button" id="create_pool" class="btn btn-primary" style="width: 100%; margin-bottom: 10px;" data-toggle="modal" data-target="#reviewModalCustomer<%= booking.id %>">Add a review ?</button>
+      <button type="button" id="create_pool" class="btn btn-primary" style="width: 182px; margin-bottom: 10px;" data-toggle="modal" data-target="#reviewModalCustomer<%= booking.id %>">Add a review ?</button>
     <% end %>
     <br>
   </div>
