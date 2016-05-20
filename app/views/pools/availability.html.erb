@@ -1,1 +1,52 @@
-coucu
+<div class="container" id="#availability-datepicker">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <%= simple_form_for [@pool, @agenda] do |f| %>
+      <div class="col-xs-10">
+      <%= f.input :start_date, label: 'Set your pool available for :', label_html: { class: 'label_form' }, placeholder: "Date" %></div><div class="col-xs-2" style='margin-top: 25px;'>
+      <%= f.hidden_field :pool_id, value: params[:pool_id] || @pool.id %>
+      <%= f.button :submit, "Mark as available", class: "btn btn-success" %></div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="container" id="#calendar-view">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+      <%= month_calendar events: @agendas do |date, agendas| %>
+       <%= date %>
+       <% agendas.each do |agenda| %>
+        <div id='available_day'>
+          <%= "Available day" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<% content_for(:after_js) do %>
+
+
+
+  <%= javascript_tag do %>
+  $(document).ready(function(){
+    datepicker_date = <%= raw @datepicker_date %>;
+
+    $('#agenda_start_date').datepicker({
+      autoclose: true,
+      format: 'dd/mm/yyyy',
+      startDate: 'd'
+      });
+
+    console.log(datepicker_date);
+
+    $('#new_agenda').submit(function() {
+      filled_day = $('#agenda_start_date').val().split('/').reverse().join('-');
+      $(".day:contains('" + filled_day + "')").addClass('has-events');
+      $(".day:contains('" + filled_day + "')").append('Available day');
+    });
+  });
+    <% end %>
+  <% end %>

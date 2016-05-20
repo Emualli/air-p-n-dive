@@ -31,7 +31,7 @@ gem 'geocoder' #Geolocaisation et Autocomplete
 gem "gmaps4rails"
 
 # Calendar for availability info
-gem 'icalendar'
+gem "simple_calendar", "~> 2.0"
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"

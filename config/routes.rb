@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   resources :pools, except: [:destroy] do
     get 'agendas' => 'pools#availability'
+    resources :agendas, only: :create
   end
   get 'searchjson' => 'pools#searchjson'
   resources :users, except: [:index, :destroy] do
