@@ -13,7 +13,7 @@ class Pool < ActiveRecord::Base
   end
 
   def nb_booking_comment
-    return bookings.map(&:booking_comment).size unless bookings.empty?
+    return bookings.map(&:booking_comment).reject(&:nil?).count unless bookings.empty?
     return 0
   end
 end
