@@ -40,7 +40,7 @@
       });
 
     $('#new_agenda').submit(function() {
-      if('#agenda_start_date').val() !== '') {
+      if(('#agenda_start_date').val() !== '') {
         filled_day = $('#agenda_start_date').val().split('/').reverse().join('-');
         $(".day:contains('" + filled_day + "')").addClass('has-events');
         $(".day:contains('" + filled_day + "')").append('Available day');
