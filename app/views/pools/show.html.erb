@@ -9,10 +9,12 @@
     <div class="col-xs-12 col-sm-8">
       <div class="summary">
         <div class="profile-picture text-center">
-          <% if @pool.user.avatar? %>
-            <%= cl_image_tag @pool.user.avatar.path, class: 'avatar-large' %>
+          <%= link_to user_path(@pool.user) do %>
+            <% if @pool.user.avatar? %>
+              <%= cl_image_tag @pool.user.avatar.path, class: 'avatar-big' %>
+            <% end %>
           <% end %>
-          <p><%= @pool.user.first_name %></p>
+          <p style="font-size: 16px"><strong><%= @pool.user.first_name %></strong></p>
         </div>
         <div class="pool-description">
           <h1><%= @pool.title %></h1>
