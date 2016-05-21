@@ -46,7 +46,7 @@ class BookingsController < ApplicationController
   end
 
   def pay
-    @booking.status = "closed"
+    @booking.status = "paid"
     @booking.save
 
     redirect_to user_bookings_path(current_user)
