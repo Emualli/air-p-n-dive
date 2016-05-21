@@ -1,0 +1,1 @@
+SetBookingStatusToFinishedJob.perform_later
