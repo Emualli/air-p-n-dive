@@ -33,6 +33,11 @@ gem "gmaps4rails"
 # Calendar for availability info
 gem "simple_calendar", "~> 2.0"
 
+# Add reddis for event handling
+gem 'sidekiq'
+gem 'sinatra'
+gem 'sidekiq-failures'
+
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end

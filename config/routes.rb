@@ -17,4 +17,6 @@ Rails.application.routes.draw do
     post 'accept' => 'bookings#accept'
     post 'reject' => 'bookings#reject'
   end
+  require "sidekiq/web"
+    mount Sidekiq::Web => '/sidekiq'
 end
