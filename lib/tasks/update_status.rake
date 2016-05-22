@@ -1,5 +1,6 @@
-namespace :update_status do
-  task update: :environment do
+namespace :booking do
+  desc "Change user status after booking is passed"
+  task change_status: :environment do
     SetBookingStatusToFinishedJob.perform_later
   end
 end
